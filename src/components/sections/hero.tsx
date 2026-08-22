@@ -43,9 +43,9 @@ export function Hero() {
           transition={{ duration: 0.5, delay: 0.7 }}
           className="mx-auto mt-8 max-w-lg text-[17px] leading-relaxed text-ink-dim"
         >
-          First-year IT student who'd rather ship something broken than read one more
-          tutorial. Discord bots, low-level C++, and a compiler I probably didn't need
-          to build. Goes by <span className="font-semibold text-ink">iTsukiyomi</span> online.
+          First-year IT student who'd rather ship something broken than read one more tutorial.
+          Discord bots, low-level C++, and a compiler I probably didn't need to build. Goes by
+          <span className="font-semibold text-ink">iTsukiyomi</span> online.
         </motion.p>
 
         <motion.div

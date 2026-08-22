@@ -1,14 +1,14 @@
 export const profile = {
-  name: "Gojo",
+  name: "Meet",
   handle: "iTsukiyomi",
   github: "https://github.com/iTsukiyomi",
-  email: "your.email@example.com",
+  email: "meetr459@gmail.com",
 }
 
 export const stack = [
   "Python",
   "C++",
-  "Rust",
+  "JavaScript",
   "discord.py",
   "MongoDB",
   "Redis",
@@ -21,7 +21,7 @@ export const pillars = [
   {
     title: "Discord bots",
     description:
-      "Bots with actual game logic behind them — role systems, real-time state, the whole thing.",
+      "Some random discord bots made to have fun with my friends.",
   },
   {
     title: "Low-level stuff",
@@ -29,8 +29,8 @@ export const pillars = [
       "C++ and Rust, for when I want my code to run fast and my patience to run out.",
   },
   {
-    title: "A compiler, apparently",
+    title: "Some fastapi projects",
     description:
-      "Built a small language that compiles down to Python and JS. No real reason.",
+      "Built a small fastapi project for manga details in cli, MangaDex CLI.",
   },
 ]

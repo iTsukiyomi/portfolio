@@ -26,7 +26,7 @@ export function Contact() {
               Got something worth building?
             </h2>
             <p className="relative mx-auto mt-4 max-w-sm text-[15px] text-ink-dim">
-              I'm around. Bots, backend chaos, weird compiler ideas — I'm in.
+              I'm around. Bots, backend chaos, weird compiler ideas. I'm in.
             </p>
 
             <div className="relative mt-9 flex flex-wrap items-center justify-center gap-3">

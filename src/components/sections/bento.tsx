@@ -33,17 +33,17 @@ export function Bento() {
             <SpotlightCard className="h-full">
               <div className="flex h-full flex-col justify-center p-8">
                 <p className="text-[16px] leading-relaxed text-ink-dim">
-                  I'm a first-year IT student, and I learn by breaking things — mostly in my
-                  own repos, not in anyone's production. I'd rather build a whole project
-                  wrong once than read the same doc page twice.
+                  I'm a first-year IT student, and I learn by breaking things. Mostly in my own
+                  repos, not in anyone's production. I'd rather build a whole project wrong once
+                  than read the same doc page twice.
                 </p>
                 <p className="mt-4 text-[16px] leading-relaxed text-ink-dim">
                   What I actually build falls into three buckets:{" "}
                   <span className="font-semibold text-ink">Discord bots</span> with real game
                   logic, <span className="font-semibold text-ink">low-level stuff</span> in
                   C++ and Rust, and one small{" "}
-                  <span className="font-semibold text-ink">compiler</span> I built for no
-                  good reason.
+                  <span className="font-semibold text-ink">compiler</span> I built for no good
+                  reason.
                 </p>
               </div>
             </SpotlightCard>

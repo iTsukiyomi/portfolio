@@ -14,7 +14,7 @@ export const projects: Project[] = [
     title: "manga-cli",
     description: "A terminal manga reader, because tabs are for quitters.",
     longDescription:
-      "Reads manga straight from your terminal. Built it feature by feature instead of copying a finished spec — mostly so I'd actually understand what each part was doing.",
+      "Reads manga straight from your terminal. Built it feature by feature instead of copying a finished spec, mostly so I'd actually understand what each part was doing.",
     language: "Python",
     tags: ["Python", "CLI"],
     repo: "https://github.com/iTsukiyomi/manga-cli",
