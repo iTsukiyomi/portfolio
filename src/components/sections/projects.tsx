@@ -22,7 +22,7 @@ export function Projects() {
               </h2>
             </div>
             <p className="max-w-xs text-[14px] text-ink-dim">
-              Most of what I build lives in private repos. These two don't.
+              Most of what I build is small and scattered across repos. Here is the honest list.
             </p>
           </div>
         </Reveal>
@@ -83,11 +83,15 @@ export function Projects() {
                         </span>
                       ))}
                     </div>
-                    <Button className="mt-8" asChild>
-                      <a href={p.repo} target="_blank" rel="noopener noreferrer">
-                        <GithubIcon className="h-4 w-4" />
-                        View repository
-                      </a>
+                    <Button className="mt-8" asChild={!!p.repo} disabled={!p.repo}>
+                      {p.repo ? (
+                        <a href={p.repo} target="_blank" rel="noopener noreferrer">
+                          <GithubIcon className="h-4 w-4" />
+                          View repository
+                        </a>
+                      ) : (
+                        <span>No public repo for this one yet</span>
+                      )}
                     </Button>
                   </div>
                 </DialogContent>

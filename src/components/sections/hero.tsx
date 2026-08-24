@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Magnetic } from "@/components/ui/magnetic"
 import { Spotlight } from "@/components/ui/spotlight"
 
-const words = ["I", "build", "bots", "that", "argue", "better", "than", "me."]
+const words = ["I", "build", "things", ",", "fix", "things", "," ,"and", "break", "things", "."]
 
 export function Hero() {
   return (
@@ -30,7 +30,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.15 + i * 0.05, ease: [0.22, 1, 0.36, 1] }}
-              className={`inline-block mr-[0.28em] ${w === "argue" ? "text-accent" : ""}`}
+              className={`inline-block mr-[0.28em] ${w === "build" || w === "break" || w == "fix" ? "text-accent" : ""}`}
             >
               {w}
             </motion.span>
@@ -43,9 +43,8 @@ export function Hero() {
           transition={{ duration: 0.5, delay: 0.7 }}
           className="mx-auto mt-8 max-w-lg text-[17px] leading-relaxed text-ink-dim"
         >
-          First-year IT student who'd rather ship something broken than read one more tutorial.
-          Discord bots, low-level C++, and a compiler I probably didn't need to build. Goes by
-          <span className="font-semibold text-ink">iTsukiyomi</span> online.
+          First year B.Sc IT student learning Python, FastAPI, and just enough Linux to
+          be dangerous. Goes by <span className="font-semibold text-ink">iTsukiyomi</span> online.
         </motion.p>
 
         <motion.div

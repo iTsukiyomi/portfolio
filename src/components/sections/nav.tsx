@@ -13,7 +13,7 @@ export function Nav() {
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
         <a href="#top" className="flex items-center gap-2.5">
           <div className="flex h-8 w-8 items-center justify-center rounded-full bg-accent">
-            <span className="font-display text-sm font-bold text-white">G</span>
+            <span className="font-display text-sm font-bold text-white">M</span>
           </div>
           <span className="font-display text-[16px] font-semibold tracking-tight text-ink">
             {profile.name}

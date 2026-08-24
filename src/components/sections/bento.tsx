@@ -1,11 +1,10 @@
-import { Bot, Cpu, Braces, Copy, Check } from "lucide-react"
+import { Server, Globe, Sparkles, Copy, Check } from "lucide-react"
 import { useState } from "react"
 import { Reveal } from "@/components/ui/reveal"
 import { SpotlightCard } from "@/components/ui/spotlight-card"
-import { WireSphere } from "@/components/ui/wire-sphere"
-import { pillars, stack, profile } from "@/data/profile"
+import { pillars, stack, languages, profile } from "@/data/profile"
 
-const icons = [Bot, Cpu, Braces]
+const icons = [Server, Globe, Sparkles]
 
 export function Bento() {
   const [copied, setCopied] = useState(false)
@@ -33,17 +32,14 @@ export function Bento() {
             <SpotlightCard className="h-full">
               <div className="flex h-full flex-col justify-center p-8">
                 <p className="text-[16px] leading-relaxed text-ink-dim">
-                  I'm a first-year IT student, and I learn by breaking things. Mostly in my own
-                  repos, not in anyone's production. I'd rather build a whole project wrong once
-                  than read the same doc page twice.
+                  I'm a first year B.Sc IT student, and I learn by breaking things. Mostly
+                  in my own repos, not in anyone's production.
                 </p>
                 <p className="mt-4 text-[16px] leading-relaxed text-ink-dim">
-                  What I actually build falls into three buckets:{" "}
-                  <span className="font-semibold text-ink">Discord bots</span> with real game
-                  logic, <span className="font-semibold text-ink">low-level stuff</span> in
-                  C++ and Rust, and one small{" "}
-                  <span className="font-semibold text-ink">compiler</span> I built for no good
-                  reason.
+                  So far that means a manga tool built with{" "}
+                  <span className="font-semibold text-ink">FastAPI</span>, and a plain{" "}
+                  <span className="font-semibold text-ink">HTML and CSS</span> portfolio
+                  before this one. Small stuff, but it's mine.
                 </p>
               </div>
             </SpotlightCard>
@@ -92,7 +88,16 @@ export function Bento() {
 
           <Reveal className="md:col-span-1">
             <SpotlightCard className="h-full" tilt={false}>
-              <WireSphere />
+              <div className="flex h-full flex-col justify-center gap-2 p-4">
+                {languages.map((l) => (
+                  <div key={l.name} className="flex items-baseline justify-between gap-2">
+                    <span className="text-[12px] font-medium text-ink">{l.name}</span>
+                    <span className="font-mono text-[9.5px] uppercase text-ink-faint">
+                      {l.level}
+                    </span>
+                  </div>
+                ))}
+              </div>
             </SpotlightCard>
           </Reveal>
 

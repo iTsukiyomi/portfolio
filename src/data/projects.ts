@@ -5,28 +5,27 @@ export type Project = {
   longDescription: string
   language: string
   tags: string[]
-  repo: string
+  repo?: string
 }
 
 export const projects: Project[] = [
   {
-    id: "manga-cli",
-    title: "manga-cli",
-    description: "A terminal manga reader, because tabs are for quitters.",
+    id: "mangadex-cli",
+    title: "MangaDex CLI",
+    description: "A command line tool to search, compare, and get info on manga.",
     longDescription:
-      "Reads manga straight from your terminal. Built it feature by feature instead of copying a finished spec, mostly so I'd actually understand what each part was doing.",
+      "Built with FastAPI, using public manga APIs. Pandas and Matplotlib do the comparing and charting. All from the terminal, no browser required.",
     language: "Python",
-    tags: ["Python", "CLI"],
-    repo: "https://github.com/iTsukiyomi/manga-cli",
+    tags: ["Python", "FastAPI", "Pandas"],
+    repo: "https://github.com/iTsukiyomi/fastapi-projects",
   },
   {
-    id: "fastapi-projects",
-    title: "fastapi-projects",
-    description: "A junk drawer of FastAPI experiments. Some good, some cursed.",
+    id: "portfolio-v1",
+    title: "Personal Portfolio Website",
+    description: "A simple HTML and CSS site with basic details and projects.",
     longDescription:
-      "Public sandbox for backend ideas built on FastAPI. Some of these turn into real projects. Most just teach me something and get abandoned, which is fine actually.",
-    language: "Python",
-    tags: ["Python", "FastAPI"],
-    repo: "https://github.com/iTsukiyomi/fastapi-projects",
+      "An earlier, simpler portfolio built with plain HTML and CSS. No framework, no build step, just a straightforward page to show what I was working on at the time.",
+    language: "HTML/CSS",
+    tags: ["HTML", "CSS"],
   },
 ]
