@@ -4,13 +4,33 @@ import { Button } from "@/components/ui/button"
 import { Magnetic } from "@/components/ui/magnetic"
 import { Spotlight } from "@/components/ui/spotlight"
 
-const words = ["I", "build", "things", ",", "fix", "things", "," ,"and", "break", "things", "."]
+const headline = [
+  { text: "I" },
+  { text: "build" },
+  { text: "things," },
+  { text: "fix" },
+  { text: "things" },
+  { text: "and" },
+  { text: "break" },
+  { text: "things." },
+]
+
+const highlight: Record<string, string> = {
+  build: "var(--color-accent)",
+  fix: "var(--color-spot-blue)",
+  break: "var(--color-spot-pink)",
+}
 
 export function Hero() {
   return (
     <section id="top" className="relative isolate overflow-hidden pt-28 pb-24 md:pt-36 md:pb-32">
-      <Spotlight />
-      <div className="mx-auto max-w-4xl px-6 text-center">
+      <div>
+        <Spotlight className="-top-40 -left-10 md:-left-32 md:-top-20 h-screen" fill="white" />
+        <Spotlight className="h-[80vh] w-[50vw] top-10 left-full" fill="purple" />
+        <Spotlight className="left-80 top-28 h-[80vh] w-[50vw]" fill="blue" />
+      </div>
+
+      <div className="relative mx-auto max-w-4xl px-6 text-center">
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
@@ -24,15 +44,16 @@ export function Hero() {
         </motion.div>
 
         <h1 className="font-display text-[44px] font-bold leading-[1.05] tracking-tight text-ink sm:text-[62px] md:text-[80px]">
-          {words.map((w, i) => (
+          {headline.map((w, i) => (
             <motion.span
               key={i}
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.15 + i * 0.05, ease: [0.22, 1, 0.36, 1] }}
-              className={`inline-block mr-[0.28em] ${w === "build" || w === "break" || w == "fix" ? "text-accent" : ""}`}
+              style={highlight[w.text.replace(/[,.]/g, "")] ? { color: highlight[w.text.replace(/[,.]/g, "")] } : undefined}
+              className="inline-block mr-[0.28em]"
             >
-              {w}
+              {w.text}
             </motion.span>
           ))}
         </h1>
