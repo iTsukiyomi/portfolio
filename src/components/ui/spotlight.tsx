@@ -1,31 +1,47 @@
-export function Spotlight() {
+import { cn } from "@/lib/utils"
+
+type SpotlightProps = {
+  className?: string
+  fill?: string
+}
+
+export function Spotlight({ className, fill }: SpotlightProps) {
   return (
-    <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
-      <div
-        className="absolute left-1/2 top-[-8%] h-[650px] w-[1000px] -translate-x-1/2"
-        style={{
-          background:
-            "radial-gradient(ellipse 50% 50% at 50% 50%, color-mix(in srgb, var(--color-accent) 85%, transparent), transparent 65%)",
-          filter: "blur(70px)",
-        }}
-      />
-      <div
-        className="absolute left-1/2 top-[0%] h-[380px] w-[460px] -translate-x-1/2"
-        style={{
-          background:
-            "radial-gradient(ellipse 50% 50% at 50% 50%, rgba(255,255,255,0.55), transparent 70%)",
-          filter: "blur(50px)",
-        }}
-      />
-      <div
-        className="absolute inset-0"
-        style={{
-          backgroundImage:
-            "linear-gradient(color-mix(in srgb, var(--color-border) 60%, transparent) 1px, transparent 1px), linear-gradient(90deg, color-mix(in srgb, var(--color-border) 60%, transparent) 1px, transparent 1px)",
-          backgroundSize: "64px 64px",
-          maskImage: "radial-gradient(ellipse 60% 50% at 50% 0%, black 40%, transparent 80%)",
-        }}
-      />
-    </div>
+    <svg
+      className={cn(
+        "animate-spotlight pointer-events-none absolute z-[1] h-[169%] w-[138%] lg:w-[84%] opacity-0",
+        className
+      )}
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 3787 2842"
+      fill="none"
+    >
+      <g filter="url(#filter)">
+        <ellipse
+          cx="1924.71"
+          cy="273.501"
+          rx="1924.71"
+          ry="273.501"
+          transform="matrix(-0.822377 -0.568943 -0.568943 0.822377 3631.88 2291.09)"
+          fill={fill || "white"}
+          fillOpacity="0.21"
+        />
+      </g>
+      <defs>
+        <filter
+          id="filter"
+          x="0.860352"
+          y="0.838989"
+          width="3785.16"
+          height="2840.26"
+          filterUnits="userSpaceOnUse"
+          colorInterpolationFilters="sRGB"
+        >
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
+          <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+          <feGaussianBlur stdDeviation="151" result="effect1_foregroundBlur" />
+        </filter>
+      </defs>
+    </svg>
   )
 }
