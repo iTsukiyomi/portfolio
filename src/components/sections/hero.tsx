@@ -11,14 +11,15 @@ const headline = [
   { text: "fix" },
   { text: "things" },
   { text: "and" },
+  { text: "eventually"},
   { text: "break" },
   { text: "things." },
 ]
 
 const highlight: Record<string, string> = {
-  build: "var(--color-accent)",
-  fix: "var(--color-spot-blue)",
-  break: "var(--color-spot-pink)",
+  build: "var(--color-violet)",
+  fix: "var(--color-violet)",
+  break: "var(--color-violet)",
 }
 
 export function Hero() {

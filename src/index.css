@@ -19,6 +19,10 @@
   --color-spot-pink: #FF5C8A;
   --color-accent-deep: #5B3FE0;
   --color-accent-tint: rgba(124,92,255,0.14);
+  --color-green: #10B981;
+  --color-cyan: #06B6D4;
+  --color-crimson: #EF4444;
+  --color-violet: #8B5CF6;
 
   --shadow-sm: 0 1px 2px rgba(0,0,0,0.4);
   --shadow-md: 0 16px 40px -16px rgba(0,0,0,0.6);
