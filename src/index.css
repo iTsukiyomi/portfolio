@@ -15,6 +15,8 @@
   --color-ink-faint: #67646F;
 
   --color-accent: #7C5CFF;
+  --color-spot-blue: #4C86FF;
+  --color-spot-pink: #FF5C8A;
   --color-accent-deep: #5B3FE0;
   --color-accent-tint: rgba(124,92,255,0.14);
 
@@ -55,6 +57,21 @@ body {
 
 .font-mono {
   font-family: var(--font-mono);
+}
+
+@keyframes spotlight {
+  0% {
+    opacity: 0;
+    transform: translate(-72%, -62%) scale(0.5);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -40%) scale(1);
+  }
+}
+
+.animate-spotlight {
+  animation: spotlight 2s ease 0.75s 1 forwards;
 }
 
 @keyframes spin-slow {
