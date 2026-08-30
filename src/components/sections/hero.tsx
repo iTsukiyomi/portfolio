@@ -3,7 +3,7 @@ import { ArrowUpRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Magnetic } from "@/components/ui/magnetic"
 import { Spotlight } from "@/components/ui/spotlight"
-
+ 
 const headline = [
   { text: "I" },
   { text: "build" },

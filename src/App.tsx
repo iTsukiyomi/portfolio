@@ -4,12 +4,12 @@ import { Bento } from "@/components/sections/bento"
 import { Projects } from "@/components/sections/projects"
 import { Contact } from "@/components/sections/contact"
 import { Footer } from "@/components/sections/footer"
-
+ 
 function App() {
   return (
     <div className="min-h-screen bg-bg text-ink">
       <Nav />
-      <main>
+      <main className="pt-16">
         <Hero />
         <Bento />
         <Projects />
@@ -19,5 +19,6 @@ function App() {
     </div>
   )
 }
-
+ 
 export default App
+ 
