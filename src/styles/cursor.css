@@ -1,0 +1,50 @@
+/* Custom OS Magnetic Cursor Styling */
+
+@media (hover: hover) and (pointer: fine) {
+  body {
+    cursor: default;
+  }
+
+  .os-cursor-dot {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 10px;
+    height: 10px;
+    background-color: var(--accent);
+    border: 1px solid var(--border);
+    pointer-events: none;
+    z-index: 999999;
+    will-change: transform;
+    mix-blend-mode: difference;
+    transform: translate(-50%, -50%);
+  }
+
+  .os-cursor-crosshair {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 28px;
+    height: 28px;
+    border: 1px dashed var(--accent);
+    pointer-events: none;
+    z-index: 999998;
+    will-change: transform;
+    transform: translate(-50%, -50%);
+    opacity: 0.7;
+    transition: transform 150ms var(--ease-sharp), opacity 150ms var(--ease-sharp);
+  }
+
+  .os-cursor-crosshair.hovering {
+    transform: translate(-50%, -50%) scale(1.4);
+    border: 2px solid var(--accent);
+    opacity: 1;
+  }
+}
+
+/* On touch devices, cursor elements are hidden completely */
+@media (hover: none) or (pointer: coarse) {
+  .os-cursor-dot, .os-cursor-crosshair {
+    display: none !important;
+  }
+}

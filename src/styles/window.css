@@ -1,0 +1,161 @@
+/* Window Component Styling — Meet Rathod Portfolio */
+
+.os-window-frame {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: var(--surface);
+  border: 2px solid var(--border);
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  will-change: transform;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.os-window-frame.focused {
+  border-color: var(--ink);
+  box-shadow: 6px 6px 0 var(--border);
+}
+
+.os-window-frame.minimized {
+  display: none !important;
+}
+
+/* Window Titlebar */
+.window-titlebar {
+  height: 36px;
+  background-color: var(--titlebar-bg);
+  border-bottom: 2px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+  cursor: grab;
+  user-select: none;
+}
+.window-titlebar:active {
+  cursor: grabbing;
+}
+.os-window-frame.focused .window-titlebar {
+  background-color: var(--titlebar-active);
+  color: var(--titlebar-active-text);
+}
+
+.titlebar-title-text {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.titlebar-controls {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.win-control-btn {
+  width: 22px;
+  height: 22px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--ink);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  line-height: 1;
+  transition: transform 80ms var(--ease-sharp);
+}
+.win-control-btn:hover {
+  background: var(--accent);
+  color: var(--accent-contrast);
+}
+.win-control-btn:active {
+  transform: translate(1px, 1px);
+}
+.win-control-btn.close:hover {
+  background: #ff2200;
+  color: #fff;
+}
+
+/* Window Body Content */
+.window-body-scroll {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 24px;
+  background-color: var(--surface);
+  color: var(--ink);
+  overscroll-behavior: contain;
+}
+
+/* Window Resize Handle */
+.window-resize-handle {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 16px;
+  height: 16px;
+  cursor: nwse-resize;
+  background: repeating-linear-gradient(
+    135deg,
+    var(--border),
+    var(--border) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  z-index: 20;
+}
+
+/* Mobile Sheet Adaptations (<768px) */
+@media (max-width: 768px) {
+  .os-window-frame {
+    position: fixed !important;
+    top: auto !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100vw !important;
+    height: 88vh !important;
+    transform: none !important;
+    border-radius: 0 !important;
+    border: 2px solid var(--border) !important;
+    border-bottom: none !important;
+    box-shadow: 0 -4px 0 var(--border) !important;
+    z-index: 9500 !important;
+  }
+
+  .window-titlebar {
+    height: 48px;
+    padding: 0 16px;
+    cursor: default;
+  }
+
+  .win-control-btn {
+    width: 32px;
+    height: 32px;
+    font-size: 14px;
+  }
+
+  .window-resize-handle {
+    display: none;
+  }
+
+  .window-body-scroll {
+    padding: 18px;
+    height: calc(100% - 48px);
+  }
+}

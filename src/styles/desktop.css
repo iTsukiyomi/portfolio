@@ -1,0 +1,485 @@
+/* Pure Retro Desktop OS Styling — Meet Rathod Portfolio */
+
+/* Full Viewport Retro Desktop Workspace */
+.retro-desktop {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--bg);
+  color: var(--ink);
+  overflow: hidden;
+  user-select: none;
+  display: flex;
+  flex-direction: column;
+}
+
+/* -------------------------------------------------------------
+   THEME-SPECIFIC CLASSIC RETRO WALLPAPERS
+   ------------------------------------------------------------- */
+
+/* 1. PHOTOCOPY THEME: Classic Drafting Paper / NeXTSTEP / Newsprint */
+[data-theme='photocopy'] .desktop-canvas {
+  background-color: #e2e4e8;
+  background-image: radial-gradient(circle at 50% 50%, rgba(13, 15, 18, 0.03) 0%, transparent 80%);
+}
+
+/* 2. DUSK THEME: SGI / Unix Workstation / Blueprint Schematics */
+[data-theme='dusk'] .desktop-canvas {
+  background-color: #161c23;
+  background-image: radial-gradient(circle at 50% 50%, rgba(0, 240, 255, 0.04) 0%, transparent 75%);
+}
+
+/* 3. PHOSPHOR THEME: Cathode Ray CRT Shadow Mask & Scanlines */
+[data-theme='phosphor'] .desktop-canvas {
+  background-color: #080b08;
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.5) 0px,
+      rgba(0, 0, 0, 0.5) 1px,
+      transparent 1px,
+      transparent 3px
+    ),
+    radial-gradient(circle at 50% 50%, rgba(57, 255, 20, 0.04) 0%, transparent 75%);
+}
+
+/* Desktop Canvas Surface */
+.desktop-canvas {
+  position: relative;
+  flex: 1;
+  margin-top: var(--topbar-height);
+  margin-bottom: var(--dock-height);
+  width: 100%;
+  height: calc(100vh - var(--topbar-height) - var(--dock-height));
+  overflow: hidden;
+  transition: background-color 300ms var(--ease-sharp);
+}
+
+/* Retro Desktop Central Graphic & Widget */
+.desktop-hero-centerpiece {
+  position: absolute;
+  top: 50%;
+  left: 54%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  pointer-events: none;
+  z-index: 2;
+  width: 90%;
+  max-width: 680px;
+}
+
+/* Classic Desktop System Emblem */
+.desktop-system-badge {
+  border: 2px solid var(--border);
+  background: var(--surface);
+  box-shadow: 6px 6px 0 var(--border);
+  padding: 24px 32px;
+  width: 100%;
+  pointer-events: auto;
+}
+
+.system-badge-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid var(--border);
+  padding-bottom: 10px;
+  margin-bottom: 16px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.system-badge-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 900;
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  margin-bottom: 8px;
+}
+
+.system-badge-desc {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--ink);
+  margin-bottom: 16px;
+}
+
+.system-quick-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.desktop-action-btn {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 800;
+  padding: 6px 14px;
+  border: 2px solid var(--border);
+  background: var(--bg);
+  color: var(--ink);
+  cursor: pointer;
+  box-shadow: 2px 2px 0 var(--border);
+  transition: transform 80ms var(--ease-sharp);
+}
+.desktop-action-btn:hover {
+  background: var(--accent);
+  color: var(--accent-contrast);
+}
+.desktop-action-btn:active {
+  transform: translate(1px, 1px);
+  box-shadow: none;
+}
+.desktop-action-btn.featured {
+  background: var(--ink);
+  color: var(--surface);
+}
+
+/* Watermark Stamp in Corner */
+.desktop-watermark {
+  position: absolute;
+  bottom: 24px;
+  right: 28px;
+  text-align: right;
+  pointer-events: none;
+  opacity: 0.75;
+  z-index: 1;
+}
+
+.watermark-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 900;
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+  color: var(--ink);
+  text-transform: uppercase;
+}
+
+.watermark-sub {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--ink-muted);
+  margin-top: 6px;
+  letter-spacing: 0.05em;
+}
+
+/* Top System Menu Bar */
+.top-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--topbar-height);
+  background-color: var(--surface);
+  border-bottom: 2px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  z-index: 9000;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.top-bar-left, .top-bar-center, .top-bar-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.brand-badge {
+  background: var(--ink);
+  color: var(--surface);
+  padding: 3px 10px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  border: 1px solid var(--border);
+  box-shadow: 2px 2px 0 var(--border);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.brand-badge:active {
+  transform: translate(1px, 1px);
+}
+
+.sys-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  background-color: var(--accent);
+  display: inline-block;
+  box-shadow: 0 0 6px var(--accent);
+}
+
+.theme-switcher-btn {
+  border: 2px solid var(--border);
+  background: var(--bg);
+  color: var(--ink);
+  padding: 3px 10px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 2px 2px 0 var(--border);
+  transition: transform 80ms var(--ease-sharp);
+}
+.theme-switcher-btn:hover {
+  background: var(--accent);
+  color: var(--accent-contrast);
+}
+.theme-switcher-btn:active {
+  transform: translate(1px, 1px);
+  box-shadow: none;
+}
+
+.clock-display {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.05em;
+  font-weight: 800;
+  background: var(--surface-alt);
+  padding: 3px 8px;
+  border: 1px solid var(--border);
+}
+
+/* Authentic Desktop File Icons Column */
+.desktop-icons-column {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  gap: 12px;
+  z-index: 10;
+}
+
+.desktop-icon-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 86px;
+  padding: 6px 4px;
+  background: transparent;
+  border: 1px solid transparent;
+  cursor: pointer;
+  outline: none;
+  transition: background 100ms var(--ease-sharp);
+}
+.desktop-icon-btn:hover {
+  background: rgba(17, 18, 19, 0.06);
+  border-color: var(--border);
+}
+.desktop-icon-btn:focus-visible {
+  background: var(--surface);
+  border: 2px solid var(--accent);
+  box-shadow: 3px 3px 0 var(--border);
+}
+
+.icon-graphic-box {
+  width: 48px;
+  height: 48px;
+  border: 2px solid var(--border);
+  background: var(--surface);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 4px;
+  box-shadow: 2px 2px 0 var(--border);
+  position: relative;
+}
+
+.icon-tag-pill {
+  position: absolute;
+  bottom: -4px;
+  right: -4px;
+  background: var(--ink);
+  color: var(--surface);
+  font-size: 8px;
+  font-family: var(--font-mono);
+  font-weight: 800;
+  padding: 1px 4px;
+  border: 1px solid var(--border);
+}
+
+.icon-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--ink);
+  text-align: center;
+  line-height: 1.2;
+  background: var(--surface);
+  padding: 2px 4px;
+  border: 1px solid var(--border);
+  box-shadow: 1px 1px 0 var(--border);
+  margin-top: 2px;
+  white-space: nowrap;
+}
+
+/* Bottom Taskbar / Dock */
+.bottom-dock {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: var(--dock-height);
+  background-color: var(--surface);
+  border-top: 2px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  z-index: 9000;
+  font-family: var(--font-mono);
+  font-size: 12px;
+}
+
+.dock-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  overflow-x: auto;
+  max-width: 65%;
+}
+
+.start-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 34px;
+  padding: 0 14px;
+  border: 2px solid var(--border);
+  background: var(--accent);
+  color: var(--accent-contrast);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 900;
+  cursor: pointer;
+  box-shadow: 2px 2px 0 var(--border);
+}
+.start-btn:active {
+  transform: translate(1px, 1px);
+  box-shadow: none;
+}
+
+.dock-item-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 32px;
+  padding: 0 12px;
+  border: 2px solid var(--border);
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 800;
+  cursor: pointer;
+  white-space: nowrap;
+  box-shadow: 2px 2px 0 var(--border);
+}
+.dock-item-btn.active {
+  background: var(--ink);
+  color: var(--surface);
+  border-color: var(--accent);
+}
+.dock-item-btn.minimized {
+  opacity: 0.6;
+  background: var(--surface-alt);
+}
+
+.dock-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.raw-diagnostic-box {
+  border: 1px dashed var(--ink-muted);
+  padding: 3px 8px;
+  font-size: 10px;
+  background: var(--bg);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.raw-toggle-lever {
+  cursor: pointer;
+  background: var(--accent);
+  color: var(--accent-contrast);
+  padding: 2px 6px;
+  font-size: 9px;
+  font-weight: 800;
+  border: 1px solid var(--border);
+}
+
+/* Mobile Layout (<768px) */
+@media (max-width: 768px) {
+  .top-bar {
+    padding: 0 8px;
+    font-size: 10px;
+  }
+  .brand-badge {
+    padding: 2px 6px;
+    font-size: 10px;
+  }
+  .theme-switcher-btn {
+    padding: 2px 6px;
+    font-size: 9px;
+  }
+  .clock-display {
+    padding: 2px 5px;
+    font-size: 10px;
+  }
+  .top-bar-center, .sys-status, .raw-diagnostic-box {
+    display: none;
+  }
+  .desktop-icons-column {
+    position: relative;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 16px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px 10px;
+    max-height: none;
+  }
+  .desktop-icon-btn {
+    width: 100%;
+    padding: 6px 2px;
+  }
+  .icon-label {
+    font-size: 10px;
+    white-space: normal;
+  }
+  .desktop-hero-centerpiece {
+    display: none;
+  }
+  .desktop-watermark {
+    bottom: 20px;
+    right: 16px;
+    opacity: 0.35;
+  }
+  .watermark-title {
+    font-size: 2.2rem;
+  }
+}

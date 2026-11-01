@@ -1,0 +1,161 @@
+/* Magazine Editorial Layout Styling — Meet Rathod Portfolio */
+
+.magazine-container {
+  max-width: var(--max-content-width);
+  margin: 0 auto;
+  padding: 32px 32px 80px 32px;
+  position: relative;
+  z-index: 5;
+}
+
+/* Masthead Header */
+.magazine-masthead {
+  border: 2px solid var(--border);
+  background: var(--surface);
+  box-shadow: var(--shadow-md);
+  margin-bottom: 40px;
+  position: relative;
+}
+
+.masthead-top-rule {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 16px;
+  border-bottom: 2px solid var(--border);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  background: var(--surface-alt);
+}
+
+.masthead-hero-content {
+  padding: 40px 32px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* The Single Hero Moment: Grid Printing Press Raster Line */
+.print-raster-bar {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background-color: var(--accent);
+  box-shadow: 0 0 12px var(--accent);
+  pointer-events: none;
+  opacity: 0;
+  z-index: 10;
+}
+
+.masthead-title-block {
+  font-size: var(--text-hero);
+  font-weight: 900;
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+  max-width: 14ch;
+}
+
+.masthead-subtitle-strip {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex-wrap: wrap;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink);
+  border-top: 1px solid var(--border);
+  padding-top: 16px;
+}
+
+/* Deliberate Imperfection 1: Misaligned Rubber Stamp Overlap */
+.stamp-badge-imperfect {
+  position: absolute;
+  top: -14px;
+  right: 28px;
+  background: var(--accent);
+  color: var(--accent-contrast);
+  padding: 4px 14px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 900;
+  border: 2px solid var(--border);
+  box-shadow: 3px 3px 0 var(--border);
+  transform: rotate(-2.4deg);
+  z-index: 20;
+  pointer-events: none;
+}
+
+/* Editorial Articles Grid */
+.editorial-sections-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+
+.editorial-section-header {
+  border-bottom: 2px solid var(--border);
+  padding-bottom: 8px;
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.editorial-section-title {
+  font-size: var(--text-h1);
+  letter-spacing: -0.03em;
+}
+
+.editorial-section-tag {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--ink-muted);
+}
+
+/* Project Article Cards (Magazine style, not generic SaaS) */
+.project-articles-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 24px;
+}
+
+.project-card-large {
+  grid-column: span 7;
+  border: 2px solid var(--border);
+  background: var(--surface);
+  box-shadow: var(--shadow-md);
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.project-card-aside {
+  grid-column: span 5;
+  border: 2px solid var(--border);
+  background: var(--surface-alt);
+  box-shadow: var(--shadow-md);
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 900px) {
+  .magazine-container {
+    padding: 20px 16px 80px 16px;
+  }
+  .masthead-hero-content {
+    padding: 28px 18px;
+  }
+  .project-card-large, .project-card-aside {
+    grid-column: span 12;
+  }
+}

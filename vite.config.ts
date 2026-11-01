@@ -1,14 +1,18 @@
 import path from "path"
 import react from "@vitejs/plugin-react"
-import tailwindcss from "@tailwindcss/vite"
 import { defineConfig } from "vite"
 
 export default defineConfig({
   base: "/portfolio/",
-  plugins: [react(), tailwindcss()],
+  plugins: [react()],
   resolve: {
     alias: {
       "@": path.resolve(import.meta.dirname, "./src"),
     },
   },
+  build: {
+    outDir: "docs",
+    emptyOutDir: true,
+  },
 })
+

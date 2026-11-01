@@ -1,0 +1,45 @@
+name: Build and Verify Portfolio
+
+on:
+  push:
+    branches:
+      - retro
+  pull_request:
+    branches:
+      - retro
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: 'pages'
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run lint
+        run: npm run lint
+
+      - name: Build static site (outputs to docs/)
+        run: npm run build
+
+      - name: Verify build artifacts
+        run: |
+          test -f docs/index.html || exit 1
+          echo "Build verification passed. Output ready in docs/ directory for GitHub Pages."

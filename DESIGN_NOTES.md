@@ -45,8 +45,12 @@ Three distinct, named worlds. Not light/dark inversions.
 ---
 
 ### 3. Typography Selection & Hierarchy
-- **Display & Editorial Headlines**: `Cabinet Grotesk` (Variable, 800/900 weight, tight tracking, punchy geometric architecture).
-- **Chrome, Data, & Terminal**: `Martian Mono` (Variable, mechanical, brutalist proportion, distinct glyph forms).
+- **Chosen Pairing (Verified visually via Playwright test screenshot)**:
+  - **Display / Editorial**: `Cabinet Grotesk` (weights 400, 700, 800, 900). Geometric heft, bold mechanical authority, zero sterile AI default feel.
+  - **Chrome / System / Terminal**: `Martian Mono` (variable 100-800). Heavy square punctuation, industrial proportion, feels like Omarchy/Arch Linux terminal output.
+  - **Alternative Comparisons Tested**:
+    - *Bricolage + Martian Mono*: Rejected due to exaggerated organic ink traps feeling whimsical rather than systems-brutalist.
+    - *Cabinet Grotesk + IBM Plex Mono*: Rejected due to IBM Plex Mono feeling enterprise-corporate rather than raw hacker terminal.
 - **Type Scale**:
   - `hero`: `clamp(3.5rem, 8vw + 1rem, 7.5rem)` — line-height `0.92`, letter-spacing `-0.04em`.
   - `h1`: `clamp(2rem, 4vw + 0.5rem, 3.25rem)` — line-height `1.05`, letter-spacing `-0.03em`.
