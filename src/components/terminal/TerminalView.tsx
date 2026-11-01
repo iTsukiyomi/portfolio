@@ -91,7 +91,9 @@ export const TerminalView: React.FC = () => {
     {
       id: 'boot-1',
       type: 'output',
-      content: 'OMARCHY LINUX 7.2.5-3-omarchy x86_64 (tty1)\nType "help" for active commands or click command chips below.',
+      content: `OMARCHY LINUX 7.2.5 (x86_64) | Meet Rathod (Gojo // iTsukiyomi)
+Shell: zsh 5.9 | WM: Hyprland | CPU: 1.2% | Memory: 48MB / 128MB
+Commands: whoami | projects | open <id> | cat <file> | theme <name> | neofetch | clear`,
     },
   ]);
 

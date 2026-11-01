@@ -1,50 +1,33 @@
-/* Custom OS Magnetic Cursor Styling */
+/* Classic Retro Pixel Hardware Cursor Styling */
 
 @media (hover: hover) and (pointer: fine) {
-  body {
-    cursor: default;
+  /* Classic Retro OS Pixel Arrow Pointer */
+  html, body, .retro-desktop, .desktop-canvas {
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M2,2 L2,19 L6.5,15 L10.5,23 L13.5,21.5 L9.5,13.5 L15,13.5 Z' fill='%23000' stroke='%23000' stroke-width='1.5' stroke-linejoin='round'/%3E%3Cpath d='M3,4 L3,16.5 L6.5,13.5 L10.5,21.5 L12,20.5 L8,12.5 L13,12.5 Z' fill='%23fff'/%3E%3C/svg%3E"), default !important;
   }
 
-  .os-cursor-dot {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 10px;
-    height: 10px;
-    background-color: var(--accent);
-    border: 1px solid var(--border);
-    pointer-events: none;
-    z-index: 999999;
-    will-change: transform;
-    mix-blend-mode: difference;
-    transform: translate(-50%, -50%);
+  /* Clickable interactive controls: buttons, links, icons */
+  button, a, .desktop-icon-btn, .dock-item-btn, .win-control-btn, .theme-switcher-btn, .start-btn, .desktop-action-btn {
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M8,2 L11,2 L11,8 L13,8 L13,10 L15,10 L15,12 L17,12 L17,18 L15,20 L6,20 L3,14 L5.5,12 L7,13.5 L7,8 L8,8 Z' fill='%23000' stroke='%23000' stroke-width='1.5' stroke-linejoin='round'/%3E%3Cpath d='M8.5,3 L10,3 L10,9 L12,9 L12,11 L14,11 L14,13 L16,13 L16,17.5 L14.5,19 L6.5,19 L4,14 L5.5,13 L7,14.5 L7.5,8 L8.5,8 Z' fill='%23fff'/%3E%3C/svg%3E"), pointer !important;
   }
 
-  .os-cursor-crosshair {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 28px;
-    height: 28px;
-    border: 1px dashed var(--accent);
-    pointer-events: none;
-    z-index: 999998;
-    will-change: transform;
-    transform: translate(-50%, -50%);
-    opacity: 0.7;
-    transition: transform 150ms var(--ease-sharp), opacity 150ms var(--ease-sharp);
+  /* Draggable titlebars */
+  .window-titlebar {
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M9,4 L15,4 L15,9 L20,9 L20,15 L15,15 L15,20 L9,20 L9,15 L4,15 L4,9 L9,9 Z' fill='%23fff' stroke='%23000' stroke-width='1.5'/%3E%3C/svg%3E"), grab !important;
+  }
+  .window-titlebar:active {
+    cursor: grabbing !important;
   }
 
-  .os-cursor-crosshair.hovering {
-    transform: translate(-50%, -50%) scale(1.4);
-    border: 2px solid var(--accent);
-    opacity: 1;
+  /* Text inputs */
+  input, textarea, code, pre {
+    cursor: text !important;
   }
 }
 
-/* On touch devices, cursor elements are hidden completely */
+/* On touch devices, native touch handling is untouched */
 @media (hover: none) or (pointer: coarse) {
-  .os-cursor-dot, .os-cursor-crosshair {
-    display: none !important;
+  html, body, button, a {
+    cursor: auto !important;
   }
 }

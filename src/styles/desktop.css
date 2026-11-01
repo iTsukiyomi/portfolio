@@ -56,6 +56,15 @@
   transition: background-color 300ms var(--ease-sharp);
 }
 
+/* Classic Windows / Retro Selection Box Marquee */
+.desktop-selection-box {
+  position: fixed;
+  border: 1px solid #0078d7;
+  background: rgba(0, 120, 215, 0.24);
+  pointer-events: none;
+  z-index: 8500;
+}
+
 /* Retro Desktop Central Graphic & Widget */
 .desktop-hero-centerpiece {
   position: absolute;
@@ -66,10 +75,9 @@
   flex-direction: column;
   align-items: center;
   gap: 20px;
-  pointer-events: none;
   z-index: 2;
   width: 90%;
-  max-width: 680px;
+  max-width: 660px;
 }
 
 /* Classic Desktop System Emblem */
@@ -79,7 +87,6 @@
   box-shadow: 6px 6px 0 var(--border);
   padding: 24px 32px;
   width: 100%;
-  pointer-events: auto;
 }
 
 .system-badge-header {
@@ -126,7 +133,7 @@
   color: var(--ink);
   cursor: pointer;
   box-shadow: 2px 2px 0 var(--border);
-  transition: transform 80ms var(--ease-sharp);
+  transition: transform 80ms var(--ease-sharp), background 120ms var(--ease-sharp);
 }
 .desktop-action-btn:hover {
   background: var(--accent);
@@ -135,10 +142,6 @@
 .desktop-action-btn:active {
   transform: translate(1px, 1px);
   box-shadow: none;
-}
-.desktop-action-btn.featured {
-  background: var(--ink);
-  color: var(--surface);
 }
 
 /* Watermark Stamp in Corner */
@@ -258,7 +261,7 @@
   border: 1px solid var(--border);
 }
 
-/* Desktop File Icons Columns - wraps at 60% viewport height */
+/* Desktop File Icons Column - wraps to next column at 60vh */
 .desktop-icons-column {
   position: absolute;
   top: 20px;
@@ -277,7 +280,7 @@
   flex-direction: column;
   align-items: center;
   width: 96px;
-  padding: 8px 6px;
+  padding: 6px 4px;
   background: transparent;
   border: 1px solid transparent;
   cursor: pointer;
@@ -305,6 +308,40 @@
   margin-bottom: 6px;
   box-shadow: 3px 3px 0 var(--border);
   position: relative;
+}
+
+/* Theme-Specific High Contrast Icon Boxes */
+[data-theme='photocopy'] .icon-graphic-box {
+  background: #ffffff;
+  border: 2px solid #0d0f12;
+  box-shadow: 3.5px 3.5px 0 #0d0f12;
+}
+[data-theme='photocopy'] .icon-label {
+  background: #ffffff;
+  border: 1px solid #0d0f12;
+  color: #0d0f12;
+}
+
+[data-theme='dusk'] .icon-graphic-box {
+  background: #0f141a;
+  border: 2px solid #00f0ff;
+  box-shadow: 3.5px 3.5px 0 #000000;
+}
+[data-theme='dusk'] .icon-label {
+  background: #171d26;
+  border: 1px solid #3a4553;
+  color: #e5eaf0;
+}
+
+[data-theme='phosphor'] .icon-graphic-box {
+  background: #040604;
+  border: 2px solid #39ff14;
+  box-shadow: 3.5px 3.5px 0 #000000;
+}
+[data-theme='phosphor'] .icon-label {
+  background: #0d120d;
+  border: 1px solid #ffb300;
+  color: #ffb300;
 }
 
 .icon-tag-pill {
@@ -454,34 +491,76 @@
   .top-bar-center, .sys-status, .raw-diagnostic-box {
     display: none;
   }
+
+  /* Mobile scrollable canvas */
+  .desktop-canvas {
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    min-height: calc(100vh - var(--topbar-height) - var(--dock-height));
+    padding-bottom: 24px;
+  }
+
   .desktop-icons-column {
     position: relative;
     top: 0;
     left: 0;
     right: 0;
-    padding: 16px;
+    padding: 14px 10px 4px 10px;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px 10px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px 6px;
     max-height: none;
   }
   .desktop-icon-btn {
     width: 100%;
-    padding: 6px 2px;
+    padding: 4px 2px;
+  }
+  .icon-graphic-box {
+    width: 48px;
+    height: 48px;
   }
   .icon-label {
-    font-size: 10px;
+    font-size: 9px;
     white-space: normal;
   }
+
+  /* Centerpiece placed below icons on mobile, scaled down to fit */
   .desktop-hero-centerpiece {
-    display: none;
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+    width: calc(100% - 20px);
+    max-width: none;
+    margin: 8px auto 20px auto;
+    display: flex;
+    pointer-events: auto;
+    z-index: 5;
   }
+  .desktop-system-badge {
+    padding: 14px 14px;
+    box-shadow: 4px 4px 0 var(--border);
+  }
+  .system-badge-title {
+    font-size: 1.6rem;
+  }
+  .system-badge-desc {
+    font-size: 12px;
+    line-height: 1.4;
+    margin-bottom: 12px;
+  }
+  .system-quick-actions {
+    gap: 6px;
+  }
+  .desktop-action-btn {
+    font-size: 10px;
+    padding: 5px 8px;
+  }
+
   .desktop-watermark {
-    bottom: 20px;
-    right: 16px;
-    opacity: 0.35;
-  }
-  .watermark-title {
-    font-size: 2.2rem;
+    display: none;
   }
 }

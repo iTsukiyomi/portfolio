@@ -133,7 +133,7 @@ button {
 /* Accessibility: Skip to Content */
 .skip-link {
   position: absolute;
-  top: 12px;
+  top: -200px;
   left: 16px;
   background: var(--accent);
   color: var(--accent-contrast);
@@ -143,11 +143,10 @@ button {
   font-weight: 700;
   z-index: 99999;
   border: 2px solid var(--border);
-  transform: translateY(-120%);
-  transition: transform 150ms var(--ease-sharp);
+  transition: top 150ms var(--ease-sharp);
 }
 .skip-link:focus {
-  transform: translateY(0);
+  top: 12px;
 }
 
 /* Reduced Motion Override */

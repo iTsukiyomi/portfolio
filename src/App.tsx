@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { ThemeProvider } from './context/ThemeContext';
 import { WindowManagerProvider, useWindowManager } from './context/WindowManagerContext';
 import { TopBar } from './components/desktop/TopBar';
 import { DesktopIcons } from './components/desktop/DesktopIcons';
 import { Dock } from './components/desktop/Dock';
+import { ContextMenu } from './components/desktop/ContextMenu';
 import { Window } from './components/windows/Window';
 import { ProjectCaseStudy } from './components/windows/ProjectCaseStudy';
 import { AboutView } from './components/windows/AboutView';
@@ -14,14 +15,89 @@ import { BootSequence } from './components/ui/BootSequence';
 import { CustomCursor } from './components/ui/CustomCursor';
 import { PROJECTS_DATA } from './data/portfolioData';
 
+interface SelectionBox {
+  left: number;
+  top: number;
+  width: number;
+  height: number;
+}
+
 const DesktopWorkspace: React.FC = () => {
-  const { openWindowList, openWindow } = useWindowManager();
+  const { windows, openWindowList, openWindow } = useWindowManager();
   const [bootFinished, setBootFinished] = useState<boolean>(false);
 
-  const hasOpenWindows = openWindowList.length > 0;
+  // Context menu state
+  const [contextMenu, setContextMenu] = useState<{ x: number; y: number } | null>(null);
+
+  // Marquee selection box drag state
+  const [selectionBox, setSelectionBox] = useState<SelectionBox | null>(null);
+  const dragStartRef = useRef<{ x: number; y: number; button: number } | null>(null);
+  const isDraggingRef = useRef<boolean>(false);
+
+  // Check if any window is open AND not minimized
+  const hasVisibleWindows = Object.values(windows).some((w) => w.isOpen && !w.isMinimized);
+
+  // Right-click or left-click drag on canvas starts blue selection box
+  const handlePointerDown = (e: React.PointerEvent<HTMLElement>) => {
+    // Only trigger if clicking on canvas or background, not on windows or icons
+    const target = e.target as HTMLElement;
+    if (target.closest('.os-window-frame') || target.closest('.desktop-icon-btn') || target.closest('.desktop-system-badge')) {
+      return;
+    }
+
+    dragStartRef.current = { x: e.clientX, y: e.clientY, button: e.button };
+    isDraggingRef.current = false;
+  };
+
+  const handlePointerMove = (e: React.PointerEvent<HTMLElement>) => {
+    if (!dragStartRef.current) return;
+
+    const startX = dragStartRef.current.x;
+    const startY = dragStartRef.current.y;
+    const dist = Math.hypot(e.clientX - startX, e.clientY - startY);
+
+    if (dist > 5) {
+      isDraggingRef.current = true;
+      setContextMenu(null); // Close context menu if dragging
+
+      setSelectionBox({
+        left: Math.min(startX, e.clientX),
+        top: Math.min(startY, e.clientY),
+        width: Math.abs(e.clientX - startX),
+        height: Math.abs(e.clientY - startY),
+      });
+    }
+  };
+
+  const handlePointerUp = () => {
+    setSelectionBox(null);
+    dragStartRef.current = null;
+  };
+
+  const handleContextMenu = (e: React.MouseEvent<HTMLElement>) => {
+    // Only open context menu on canvas background, not on windows or buttons
+    const target = e.target as HTMLElement;
+    if (target.closest('.os-window-frame') || target.closest('button') || target.closest('a')) {
+      return;
+    }
+
+    e.preventDefault();
+    // If user dragged a selection box, don't open context menu
+    if (isDraggingRef.current) {
+      return;
+    }
+
+    setContextMenu({ x: e.clientX, y: e.clientY });
+  };
 
   return (
-    <div className="retro-desktop">
+    <div
+      className="retro-desktop"
+      onPointerDown={handlePointerDown}
+      onPointerMove={handlePointerMove}
+      onPointerUp={handlePointerUp}
+      onContextMenu={handleContextMenu}
+    >
       <a href="#desktop-canvas" className="skip-link">
         Skip to desktop
       </a>
@@ -37,15 +113,15 @@ const DesktopWorkspace: React.FC = () => {
         {/* Desktop Icons Column */}
         <DesktopIcons />
 
-        {/* Central Classic Desktop System Emblem (visible when desktop is clear or behind windows) */}
+        {/* Central Desktop System Emblem */}
         <div
           className="desktop-hero-centerpiece"
           style={{
-            opacity: hasOpenWindows ? 0.2 : 1,
-            transition: 'opacity 250ms var(--ease-sharp)',
-            pointerEvents: hasOpenWindows ? 'none' : 'auto',
+            opacity: hasVisibleWindows ? 0.18 : 1,
+            transition: 'opacity 200ms var(--ease-sharp)',
+            pointerEvents: hasVisibleWindows ? 'none' : 'auto',
           }}
-          aria-hidden={hasOpenWindows}
+          aria-hidden={hasVisibleWindows}
         >
           <div className="desktop-system-badge">
             <div className="system-badge-header">
@@ -66,7 +142,7 @@ const DesktopWorkspace: React.FC = () => {
             <div className="system-quick-actions">
               <button
                 type="button"
-                className="desktop-action-btn featured"
+                className="desktop-action-btn"
                 onClick={() => openWindow('dueler')}
               >
                 [POKÉMON DUEL]
@@ -118,6 +194,20 @@ const DesktopWorkspace: React.FC = () => {
           </div>
         </div>
 
+        {/* Windows Drag-Selection Box Marquee */}
+        {selectionBox && (
+          <div
+            className="desktop-selection-box"
+            style={{
+              left: selectionBox.left,
+              top: selectionBox.top,
+              width: selectionBox.width,
+              height: selectionBox.height,
+            }}
+            aria-hidden="true"
+          />
+        )}
+
         {/* Active Draggable Floating OS Windows */}
         {openWindowList.map((win) => {
           let content: React.ReactNode = null;
@@ -142,6 +232,15 @@ const DesktopWorkspace: React.FC = () => {
           );
         })}
       </main>
+
+      {/* Right-Click Context Menu */}
+      {contextMenu && (
+        <ContextMenu
+          x={contextMenu.x}
+          y={contextMenu.y}
+          onClose={() => setContextMenu(null)}
+        />
+      )}
 
       {/* Bottom Taskbar / Dock */}
       <Dock />

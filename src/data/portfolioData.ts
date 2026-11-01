@@ -3,6 +3,7 @@ export interface CaseStudy {
   title: string;
   shortDesc: string;
   typeTag: string;
+  image?: string;
   repoUrl: string;
   demoUrl?: string;
   problem: string;
@@ -30,6 +31,7 @@ export const PROJECTS_DATA: Record<string, CaseStudy> = {
     title: 'Pokémon Duel — Discord Battle Engine',
     shortDesc: 'Turn-based battle simulator on Discord with switch-prediction AI and web team builder.',
     typeTag: 'BOT // ASYNCIO',
+    image: 'pokemon-duel.png',
     repoUrl: 'https://github.com/iTsukiyomi/pypoke',
     demoUrl: 'https://github.com/iTsukiyomi/dueler',
     problem:

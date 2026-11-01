@@ -104,6 +104,40 @@ export const ProjectCaseStudy: React.FC<Props> = ({ data }) => {
         )}
       </section>
 
+      {/* Optional Project Screenshot / Asset Preview */}
+      {data.image && (
+        <section>
+          <div
+            style={{
+              border: '2px solid var(--border)',
+              background: 'var(--bg)',
+              padding: 8,
+              boxShadow: '3px 3px 0 var(--border)',
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              overflow: 'hidden',
+            }}
+          >
+            <img
+              src={`/portfolio/images/${data.image}`}
+              alt={`${data.title} preview`}
+              style={{
+                maxWidth: '100%',
+                maxHeight: 360,
+                objectFit: 'contain',
+                display: 'block',
+                border: '1px solid var(--border)',
+              }}
+              onError={(e) => {
+                const parent = e.currentTarget.parentElement?.parentElement;
+                if (parent) parent.style.display = 'none';
+              }}
+            />
+          </div>
+        </section>
+      )}
+
       {/* 1. The Problem */}
       <section>
         <h3
