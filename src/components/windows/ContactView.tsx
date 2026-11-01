@@ -12,6 +12,7 @@ const TOPIC_PRESETS = [
 
 export const ContactView: React.FC = () => {
   const [copiedEmail, setCopiedEmail] = useState<boolean>(false);
+  const [copiedPhone, setCopiedPhone] = useState<boolean>(false);
   const [copiedDiscord, setCopiedDiscord] = useState<boolean>(false);
   const [copiedDraft, setCopiedDraft] = useState<boolean>(false);
 
@@ -150,6 +151,50 @@ export const ContactView: React.FC = () => {
               style={{ textDecoration: 'none', textAlign: 'center', padding: '6px 12px' }}
             >
               SEND ↗
+            </a>
+          </div>
+        </div>
+
+        {/* Phone Card */}
+        <div
+          style={{
+            border: '2px solid var(--border)',
+            background: 'var(--surface)',
+            padding: 16,
+            boxShadow: '3px 3px 0 var(--border)',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'space-between',
+            gap: 12,
+          }}
+        >
+          <div>
+            <div style={{ fontSize: 10, color: 'var(--accent)', fontWeight: 800, marginBottom: 4 }}>
+              [PHONE / WHATSAPP]
+            </div>
+            <div style={{ fontSize: 14, fontWeight: 800 }}>
+              +91 8591424976
+            </div>
+            <div style={{ fontSize: 11, color: 'var(--ink-muted)', marginTop: 2 }}>
+              Direct line for calls and WhatsApp messages.
+            </div>
+          </div>
+
+          <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+            <button
+              type="button"
+              onClick={() => copyToClipboard('8591424976', setCopiedPhone)}
+              className="desktop-action-btn"
+              style={{ flex: 1, padding: '6px 8px' }}
+            >
+              {copiedPhone ? '✓ COPIED!' : 'COPY PHONE'}
+            </button>
+            <a
+              href="tel:8591424976"
+              className="desktop-action-btn"
+              style={{ textDecoration: 'none', textAlign: 'center', padding: '6px 12px' }}
+            >
+              CALL ↗
             </a>
           </div>
         </div>

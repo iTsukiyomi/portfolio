@@ -98,24 +98,25 @@ async function testNewFeatures() {
     await mobilePage.locator('button[aria-label="Open dueler.bot"]').click();
     await mobilePage.waitForTimeout(400);
 
-    // Verify prominent close button on mobile
+    // Verify clean simple top-right cross icon close button on mobile
     const mobileCloseBtn = mobilePage.locator('.win-control-btn.close');
     const isMobileCloseVisible = await mobileCloseBtn.isVisible();
-    console.log('Mobile close button visible on sheet header:', isMobileCloseVisible);
+    console.log('Mobile simple top-right cross icon visible on sheet header:', isMobileCloseVisible);
     if (!isMobileCloseVisible) {
       throw new Error('Mobile sheet close button is not visible');
     }
 
+    // Verify center close bar was removed as requested
     const mobileSheetCloseBar = mobilePage.locator('.mobile-close-sheet-btn');
-    const isMobileBarCloseVisible = await mobileSheetCloseBar.isVisible();
-    console.log('Mobile sheet full-width close button visible:', isMobileBarCloseVisible);
-    if (!isMobileBarCloseVisible) {
-      throw new Error('Mobile sheet full-width close button is not visible');
+    const hasCenterBar = (await mobileSheetCloseBar.count()) > 0;
+    if (hasCenterBar) {
+      throw new Error('Redundant center close tab button was not removed');
     }
+    console.log('✓ Redundant center close tab button removed; simple top-right cross is active');
 
-    // Click mobile close button
-    console.log('Clicking mobile close button...');
-    await mobileSheetCloseBar.click();
+    // Click mobile top-right cross icon
+    console.log('Clicking mobile top-right cross icon [×]...');
+    await mobileCloseBtn.click();
     await mobilePage.waitForTimeout(400);
 
     const isSheetStillVisible = await mobilePage.locator('article.os-window-frame').isVisible();
@@ -123,7 +124,7 @@ async function testNewFeatures() {
     if (isSheetStillVisible) {
       throw new Error('Mobile close button failed to close sheet');
     }
-    console.log('✓ Mobile close button closed the sheet cleanly!');
+    console.log('✓ Mobile top-right cross icon closed the sheet cleanly!');
 
     // Capture mobile workspace
     await mobilePage.screenshot({ path: 'screenshots/mobile_workspace_verified.png' });

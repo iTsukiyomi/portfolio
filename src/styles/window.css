@@ -121,13 +121,6 @@
 }
 
 /* Mobile Sheet Adaptations (<768px) */
-.mobile-close-label {
-  display: none;
-}
-.mobile-sheet-close-bar {
-  display: none;
-}
-
 @media (max-width: 768px) {
   .os-window-frame {
     position: fixed !important;
@@ -159,64 +152,35 @@
   .titlebar-title-text {
     font-size: 11px;
     font-weight: 800;
-    max-width: calc(100% - 100px);
+    max-width: calc(100% - 60px);
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
   }
 
   .win-control-btn.close {
-    width: auto !important;
-    height: 34px !important;
-    padding: 0 12px !important;
-    font-size: 13px !important;
-    font-weight: 900 !important;
-    background: #ff2200 !important;
-    color: #ffffff !important;
-    border: 2px solid #ffffff !important;
-    box-shadow: 2px 2px 0 #000000 !important;
+    width: 32px !important;
+    height: 32px !important;
+    padding: 0 !important;
+    font-size: 18px !important;
+    font-weight: 700 !important;
+    background: transparent !important;
+    color: var(--surface) !important;
+    border: 1px solid var(--surface) !important;
     display: flex !important;
     align-items: center;
-    gap: 4px;
+    justify-content: center;
     cursor: pointer;
+    line-height: 1;
+    box-shadow: none !important;
+  }
+  .win-control-btn.close:active {
+    background: var(--accent) !important;
+    color: var(--accent-contrast) !important;
   }
 
   .win-control-btn:not(.close) {
     display: none !important;
-  }
-
-  .mobile-close-label {
-    display: inline;
-    font-size: 11px;
-    font-weight: 900;
-  }
-
-  .mobile-sheet-close-bar {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 16px;
-    padding-bottom: 12px;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .mobile-close-sheet-btn {
-    width: 100%;
-    height: 42px;
-    background: var(--ink);
-    color: var(--surface);
-    border: 2px solid var(--border);
-    font-family: var(--font-mono);
-    font-size: 12px;
-    font-weight: 900;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    box-shadow: 3px 3px 0 var(--border);
-  }
-  .mobile-close-sheet-btn:active {
-    transform: translate(1px, 1px);
-    box-shadow: none;
   }
 
   .window-resize-handle {
