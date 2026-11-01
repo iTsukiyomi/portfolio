@@ -1,39 +1,13 @@
-/* Global Stylesheet Assembler — Meet Rathod Portfolio */
+/* Global Stylesheet — Meet Rathod Portfolio */
 
 @import './tokens.css';
-@import './desktop.css';
-@import './window.css';
-@import './magazine.css';
+@import './portfolio.css';
 @import './cursor.css';
 
-/* Self-Hosted Font Declarations */
+/* Self-Hosted JetBrains Mono Font */
 @font-face {
-  font-family: 'Cabinet Grotesk';
-  src: url('/portfolio/fonts/CabinetGrotesk-Regular.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Cabinet Grotesk';
-  src: url('/portfolio/fonts/CabinetGrotesk-Bold.woff2') format('woff2');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Cabinet Grotesk';
-  src: url('/portfolio/fonts/CabinetGrotesk-Black.woff2') format('woff2');
-  font-weight: 900;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Martian Mono';
-  src: url('/portfolio/fonts/MartianMono-Variable.woff2') format('woff2');
+  font-family: 'JetBrains Mono';
+  src: url('/portfolio/fonts/JetBrainsMono-Variable.woff2') format('woff2');
   font-weight: 100 800;
   font-style: normal;
   font-display: swap;
@@ -44,17 +18,17 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: var(--font-display);
 }
 
 html {
   font-size: 16px;
   background-color: var(--bg);
   color: var(--ink);
-  font-family: var(--font-display);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
-  transition: background-color 400ms var(--ease-sharp), color 400ms var(--ease-sharp);
+  transition: background-color 180ms var(--ease-sharp), color 180ms var(--ease-sharp);
 }
 
 body {
@@ -63,6 +37,7 @@ body {
   position: relative;
   background-color: var(--bg);
   color: var(--ink);
+  line-height: 1.6;
 }
 
 /* Accessible Focus States */
@@ -79,17 +54,15 @@ body {
 
 /* Typography Defaults */
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-display);
-  font-weight: 900;
+  font-weight: 800;
   color: var(--ink);
-  line-height: 0.98;
+  line-height: 1.15;
 }
 
 p {
   font-size: var(--text-body);
-  line-height: 1.55;
+  line-height: 1.65;
   color: var(--ink);
-  max-width: 68ch;
 }
 
 code, pre, kbd, samp {
@@ -97,10 +70,13 @@ code, pre, kbd, samp {
 }
 
 a {
-  color: inherit;
+  color: var(--accent);
   text-decoration: underline;
   text-underline-offset: 3px;
   text-decoration-thickness: 1.5px;
+}
+a:hover {
+  color: var(--accent-hover);
 }
 
 button {
@@ -111,23 +87,16 @@ button {
   color: inherit;
 }
 
-/* Custom Brutalist Scrollbar */
+/* Custom Minimalist Scrollbar */
 ::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
 }
 ::-webkit-scrollbar-track {
   background: var(--bg);
-  border-left: 1px solid var(--border);
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--ink);
-  border: 2px solid var(--bg);
-}
-
-/* Lenis Scroll Container Isolation */
-[data-lenis-prevent] {
-  overscroll-behavior: contain;
+  background: var(--ink-muted);
 }
 
 /* Accessibility: Skip to Content */
@@ -138,7 +107,6 @@ button {
   background: var(--accent);
   color: var(--accent-contrast);
   padding: 8px 16px;
-  font-family: var(--font-mono);
   font-size: 13px;
   font-weight: 700;
   z-index: 99999;

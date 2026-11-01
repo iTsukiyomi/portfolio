@@ -1,73 +1,64 @@
 /* Design Tokens — Meet Rathod Portfolio */
 
 :root, [data-theme='light'] {
-  /* Light Theme (Default: Cold Architectural Newsprint) */
-  --bg: #e2e4e8;
-  --surface: #edf0f4;
-  --surface-alt: #d8dce2;
-  --ink: #0d0f12;
-  --ink-muted: #1e293b;
-  --border: #0d0f12;
-  --accent: #ff3800;
+  /* Clean Light Theme */
+  --bg: #f3f4f6;
+  --surface: #ffffff;
+  --surface-alt: #f9fafb;
+  --ink: #111827;
+  --ink-muted: #4b5563;
+  --border: #111827;
+  --border-subtle: #e5e7eb;
+  --accent: #0d9488;
+  --accent-hover: #0f766e;
   --accent-contrast: #ffffff;
-  --shadow-color: #0d0f12;
-  --grid-line: rgba(13, 15, 18, 0.1);
-  --titlebar-bg: #d8dce2;
-  --titlebar-active: #0d0f12;
-  --titlebar-active-text: #edf0f4;
-  --terminal-bg: #111418;
-  --terminal-text: #e2e4e8;
-  --terminal-prompt: #ff3800;
-  --code-bg: rgba(13, 15, 18, 0.06);
+  --shadow-color: #111827;
+  --tag-bg: rgba(13, 148, 136, 0.1);
+  --terminal-bg: #111827;
+  --terminal-text: #f9fafb;
+  --terminal-prompt: #14b8a6;
 
-  /* Elevation / Hard Zero-Blur Brutalist Shadows */
+  /* Hard Brutalist Zero-Blur Shadows */
   --shadow-sm: 2px 2px 0 var(--shadow-color);
   --shadow-md: 4px 4px 0 var(--shadow-color);
   --shadow-lg: 6px 6px 0 var(--shadow-color);
   --border-width: 2px;
 
-  /* Typography Families */
-  --font-display: 'Cabinet Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-mono: 'Martian Mono', ui-monospace, monospace;
+  /* High Readability JetBrains Mono Typography */
+  --font-display: 'JetBrains Mono', ui-monospace, monospace;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
 
   /* Fluid Type Scale */
-  --text-hero: clamp(3.25rem, 8vw + 0.5rem, 7.5rem);
-  --text-h1: clamp(2rem, 4vw + 0.25rem, 3.25rem);
-  --text-h2: clamp(1.35rem, 2vw + 0.2rem, 1.85rem);
-  --text-body: clamp(0.95rem, 0.4vw + 0.85rem, 1.125rem);
+  --text-hero: clamp(2.4rem, 5vw, 3.8rem);
+  --text-h1: clamp(1.8rem, 3.5vw, 2.5rem);
+  --text-h2: clamp(1.3rem, 2.2vw, 1.7rem);
+  --text-h3: clamp(1.05rem, 1.5vw, 1.25rem);
+  --text-body: 0.95rem;
   --text-meta: 0.8125rem;
 
-  /* Motion Curves */
-  --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  /* Transitions */
   --ease-sharp: cubic-bezier(0.25, 1, 0.5, 1);
-  --ease-in-out: cubic-bezier(0.76, 0, 0.24, 1);
-  --duration-fast: 150ms;
-  --duration-normal: 280ms;
-  --duration-open: 450ms;
+  --duration-fast: 120ms;
+  --duration-normal: 240ms;
 
-  /* Layout Constants */
-  --topbar-height: 40px;
-  --dock-height: 48px;
-  --max-content-width: 1480px;
+  --max-content-width: 960px;
 }
 
-/* Dark Theme (Industrial Slate Iron / SGI Blueprint) */
+/* Clean Dark Theme */
 [data-theme='dark'] {
-  --bg: #161c23;
-  --surface: #202731;
-  --surface-alt: #12161c;
-  --ink: #e5eaf0;
-  --ink-muted: #8ea0b5;
-  --border: #3a4553;
-  --accent: #00f0ff;
-  --accent-contrast: #000000;
-  --shadow-color: #080c10;
-  --grid-line: rgba(229, 234, 240, 0.07);
-  --titlebar-bg: #192029;
-  --titlebar-active: #00f0ff;
-  --titlebar-active-text: #000000;
-  --terminal-bg: #0d1217;
-  --terminal-text: #e5eaf0;
-  --terminal-prompt: #00f0ff;
-  --code-bg: rgba(0, 240, 255, 0.05);
+  --bg: #0b0f17;
+  --surface: #151d2a;
+  --surface-alt: #0e141e;
+  --ink: #f8fafc;
+  --ink-muted: #94a3b8;
+  --border: #334155;
+  --border-subtle: #1e293b;
+  --accent: #14b8a6;
+  --accent-hover: #2dd4bf;
+  --accent-contrast: #020617;
+  --shadow-color: #020617;
+  --tag-bg: rgba(20, 184, 166, 0.15);
+  --terminal-bg: #070a0f;
+  --terminal-text: #f8fafc;
+  --terminal-prompt: #2dd4bf;
 }

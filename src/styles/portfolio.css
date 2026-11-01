@@ -1,0 +1,236 @@
+/* Clean, Ultra-Readable Portfolio Stylesheet — Meet Rathod */
+
+/* Navigation Header */
+.site-nav {
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--surface);
+  border-bottom: 2px solid var(--border);
+  z-index: 1000;
+  transition: background-color 200ms var(--ease-sharp);
+}
+
+.site-nav-inner {
+  max-width: var(--max-content-width);
+  margin: 0 auto;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+}
+
+.site-logo {
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--ink);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+.site-logo-dot {
+  width: 8px;
+  height: 8px;
+  background-color: var(--accent);
+  display: inline-block;
+}
+
+.nav-tabs {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.nav-tab-btn {
+  padding: 6px 12px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink-muted);
+  text-decoration: none;
+  background: transparent;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 120ms var(--ease-sharp);
+}
+.nav-tab-btn:hover {
+  color: var(--ink);
+  background: var(--surface-alt);
+}
+.nav-tab-btn.active {
+  color: var(--ink);
+  background: var(--tag-bg);
+  border-color: var(--accent);
+  font-weight: 700;
+}
+
+.theme-toggle-btn {
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: 700;
+  border: 1.5px solid var(--border);
+  background: var(--surface);
+  color: var(--ink);
+  cursor: pointer;
+  box-shadow: 2px 2px 0 var(--border);
+  transition: transform 80ms var(--ease-sharp);
+}
+.theme-toggle-btn:hover {
+  background: var(--accent);
+  color: var(--accent-contrast);
+}
+.theme-toggle-btn:active {
+  transform: translate(1px, 1px);
+  box-shadow: none;
+}
+
+/* Page Layout Container */
+.page-container {
+  max-width: var(--max-content-width);
+  margin: 0 auto;
+  padding: 48px 24px 80px 24px;
+}
+
+/* Cards & Content Blocks */
+.content-card {
+  background: var(--surface);
+  border: 2px solid var(--border);
+  box-shadow: var(--shadow-md);
+  padding: 32px;
+  margin-bottom: 32px;
+}
+
+.section-title {
+  font-size: var(--text-h1);
+  font-weight: 800;
+  margin-bottom: 12px;
+  letter-spacing: -0.02em;
+}
+
+.section-subtitle {
+  font-size: 15px;
+  color: var(--ink-muted);
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.pill-badge {
+  display: inline-block;
+  background: var(--tag-bg);
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 8px;
+  margin-bottom: 8px;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--ink);
+  color: var(--surface);
+  border: 2px solid var(--border);
+  padding: 10px 20px;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 3px 3px 0 var(--accent);
+  transition: transform 80ms var(--ease-sharp);
+}
+.btn-primary:hover {
+  background: var(--accent);
+  color: var(--accent-contrast);
+  color: inherit;
+}
+.btn-primary:active {
+  transform: translate(1px, 1px);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--surface);
+  color: var(--ink);
+  border: 2px solid var(--border);
+  padding: 10px 18px;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 2px 2px 0 var(--border);
+  transition: transform 80ms var(--ease-sharp);
+}
+.btn-secondary:hover {
+  background: var(--surface-alt);
+}
+.btn-secondary:active {
+  transform: translate(1px, 1px);
+  box-shadow: none;
+}
+
+.site-nav-top-row {
+  display: flex;
+  align-items: center;
+}
+.mobile-theme-btn {
+  display: none;
+}
+.desktop-theme-btn {
+  display: block;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+  .site-nav-inner {
+    padding: 10px 16px;
+    height: auto;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+  .site-nav-top-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+  .mobile-theme-btn {
+    display: block;
+  }
+  .desktop-theme-btn {
+    display: none;
+  }
+  .nav-tabs {
+    display: flex;
+    gap: 6px;
+    overflow-x: auto;
+    width: 100%;
+    padding-bottom: 2px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .nav-tabs::-webkit-scrollbar {
+    display: none;
+  }
+  .nav-tab-btn {
+    padding: 6px 12px;
+    font-size: 12px;
+    flex-shrink: 0;
+  }
+  .page-container {
+    padding: 24px 16px 60px 16px;
+  }
+  .content-card {
+    padding: 20px;
+  }
+  .about-responsive-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
