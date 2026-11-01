@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { useTheme, type ThemeMode } from '../../context/ThemeContext';
+import { useTheme, type ThemeName } from '../../context/ThemeContext';
 import { useWindowManager } from '../../context/WindowManagerContext';
 
 interface ContextMenuProps {
@@ -9,11 +9,10 @@ interface ContextMenuProps {
 }
 
 export const ContextMenu: React.FC<ContextMenuProps> = ({ x, y, onClose }) => {
-  const { theme, mode, setMode } = useTheme();
+  const { theme, setTheme } = useTheme();
   const { openWindow, windows, closeWindow } = useWindowManager();
   const menuRef = useRef<HTMLDivElement>(null);
 
-  // Close context menu when clicking outside or pressing Escape
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
       if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
@@ -35,14 +34,13 @@ export const ContextMenu: React.FC<ContextMenuProps> = ({ x, y, onClose }) => {
     };
   }, [onClose]);
 
-  // Adjust menu position so it never overflows viewport
   const menuWidth = 220;
-  const menuHeight = 270;
+  const menuHeight = 250;
   const clampedX = Math.max(10, Math.min(x, window.innerWidth - menuWidth - 10));
   const clampedY = Math.max(44, Math.min(y, window.innerHeight - menuHeight - 50));
 
-  const handleThemeSelect = (targetMode: ThemeMode) => {
-    setMode(targetMode);
+  const handleThemeSelect = (targetTheme: ThemeName) => {
+    setTheme(targetTheme);
     onClose();
   };
 
@@ -89,55 +87,31 @@ export const ContextMenu: React.FC<ContextMenuProps> = ({ x, y, onClose }) => {
         <div style={separatorStyle} />
 
         <div style={{ padding: '3px 12px', fontSize: 9, color: 'var(--ink-muted)', fontWeight: 800 }}>
-          THEMES:
+          THEME:
         </div>
 
         <button
           type="button"
-          onClick={() => handleThemeSelect('photocopy')}
+          onClick={() => handleThemeSelect('light')}
           style={menuItemStyle}
           onMouseEnter={onHoverIn}
           onMouseLeave={onHoverOut}
           role="menuitem"
         >
-          <span>Theme: Photocopy</span>
-          {mode === 'photocopy' && <span style={{ color: 'var(--accent)', fontWeight: 800 }}>✓</span>}
+          <span>Theme: Light</span>
+          {theme === 'light' && <span style={{ color: 'var(--accent)', fontWeight: 800 }}>✓</span>}
         </button>
 
         <button
           type="button"
-          onClick={() => handleThemeSelect('dusk')}
+          onClick={() => handleThemeSelect('dark')}
           style={menuItemStyle}
           onMouseEnter={onHoverIn}
           onMouseLeave={onHoverOut}
           role="menuitem"
         >
-          <span>Theme: Dusk</span>
-          {mode === 'dusk' && <span style={{ color: 'var(--accent)', fontWeight: 800 }}>✓</span>}
-        </button>
-
-        <button
-          type="button"
-          onClick={() => handleThemeSelect('phosphor')}
-          style={menuItemStyle}
-          onMouseEnter={onHoverIn}
-          onMouseLeave={onHoverOut}
-          role="menuitem"
-        >
-          <span>Theme: Phosphor</span>
-          {mode === 'phosphor' && <span style={{ color: 'var(--accent)', fontWeight: 800 }}>✓</span>}
-        </button>
-
-        <button
-          type="button"
-          onClick={() => handleThemeSelect('auto')}
-          style={menuItemStyle}
-          onMouseEnter={onHoverIn}
-          onMouseLeave={onHoverOut}
-          role="menuitem"
-        >
-          <span>Theme: Auto [{theme.toUpperCase()}]</span>
-          {mode === 'auto' && <span style={{ color: 'var(--accent)', fontWeight: 800 }}>✓</span>}
+          <span>Theme: Dark</span>
+          {theme === 'dark' && <span style={{ color: 'var(--accent)', fontWeight: 800 }}>✓</span>}
         </button>
 
         <div style={separatorStyle} />
@@ -153,7 +127,21 @@ export const ContextMenu: React.FC<ContextMenuProps> = ({ x, y, onClose }) => {
           onMouseLeave={onHoverOut}
           role="menuitem"
         >
-          <span>▶ Open Terminal (contact.sh)</span>
+          <span>✉ Contact (contact.sh)</span>
+        </button>
+
+        <button
+          type="button"
+          onClick={() => {
+            openWindow('terminal');
+            onClose();
+          }}
+          style={menuItemStyle}
+          onMouseEnter={onHoverIn}
+          onMouseLeave={onHoverOut}
+          role="menuitem"
+        >
+          <span>▶ Terminal (terminal.sh)</span>
         </button>
 
         <button

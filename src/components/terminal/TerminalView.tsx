@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { useWindowManager, type WindowId } from '../../context/WindowManagerContext';
-import { useTheme, type ThemeMode } from '../../context/ThemeContext';
+import { useTheme, type ThemeName } from '../../context/ThemeContext';
 import { PROJECTS_DATA } from '../../data/portfolioData';
 
 interface TerminalLine {
@@ -82,14 +82,34 @@ function levenshtein(a: string, b: string): number {
 
 export const TerminalView: React.FC = () => {
   const { openWindow } = useWindowManager();
-  const { theme, setMode } = useTheme();
+  const { theme, setTheme } = useTheme();
 
   const [inputVal, setInputVal] = useState<string>('');
   const [history, setHistory] = useState<string[]>([]);
   const [historyIndex, setHistoryIndex] = useState<number>(-1);
   const [lines, setLines] = useState<TerminalLine[]>([
     {
-      id: 'boot-1',
+      id: 'boot-prompt',
+      type: 'input',
+      content: 'gojo@omarchy:~$ neofetch',
+    },
+    {
+      id: 'boot-neofetch',
+      type: 'output',
+      content: `      /\\         gojo@omarchy
+     /  \\        ------------
+    / /\\ \\       OS: Arch Linux x86_64 (Omarchy 7.2)
+   / /__\\ \\      Host: Meet Rathod (Gojo // iTsukiyomi)
+  / /____\\ \\     Kernel: 7.2.5-3-omarchy
+ /__________\\    Uptime: 14 days, 6 hours, 28 mins
+                 Shell: zsh 5.9 | WM: Hyprland (Wayland)
+                 Terminal: foot / alacritty / VT100
+                 CPU: AMD Ryzen 7 @ 4.2GHz
+                 Memory: 48.2MB / 128MB [Heap OK]
+                 Projects: dueler, mafioso, ani-cpp, shedskin`,
+    },
+    {
+      id: 'boot-summary',
       type: 'output',
       content: `OMARCHY LINUX 7.2.5 (x86_64) | Meet Rathod (Gojo // iTsukiyomi)
 Shell: zsh 5.9 | WM: Hyprland | CPU: 1.2% | Memory: 48MB / 128MB
@@ -249,12 +269,12 @@ GitHub: https://github.com/iTsukiyomi`,
             outputLines.push({
               id: `out-${Date.now()}`,
               type: 'output',
-              content: `Current theme: ${theme}. Options: theme photocopy, theme dusk, theme phosphor, theme auto`,
+              content: `Current theme: ${theme}. Options: theme light, theme dark`,
             });
           } else {
             const target = args[0].toLowerCase();
-            if (target === 'photocopy' || target === 'dusk' || target === 'phosphor' || target === 'auto') {
-              setMode(target as ThemeMode);
+            if (target === 'light' || target === 'dark') {
+              setTheme(target as ThemeName);
               outputLines.push({
                 id: `out-${Date.now()}`,
                 type: 'success',
@@ -264,7 +284,7 @@ GitHub: https://github.com/iTsukiyomi`,
               outputLines.push({
                 id: `err-${Date.now()}`,
                 type: 'error',
-                content: `theme: invalid theme "${args[0]}". Valid choices: photocopy, dusk, phosphor, auto`,
+                content: `theme: invalid theme "${args[0]}". Valid choices: light, dark`,
               });
             }
           }
@@ -336,7 +356,7 @@ Permission granted: Reach out to Meet Rathod at meetr459@gmail.com to discuss sy
       setLines((prev) => [...prev, inputLine, ...outputLines]);
       setInputVal('');
     },
-    [history, openWindow, setMode, theme]
+    [history, openWindow, setTheme, theme]
   );
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {

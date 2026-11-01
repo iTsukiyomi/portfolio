@@ -219,13 +219,23 @@ export const Window: React.FC<WindowProps> = ({ instance, children }) => {
             title="Close window"
             aria-label="Close window"
           >
-            ×
+            <span>×</span>
+            <span className="mobile-close-label">CLOSE</span>
           </button>
         </div>
       </header>
 
       {/* Window Body Container */}
       <div className="window-body-scroll" data-lenis-prevent="true">
+        <div className="mobile-sheet-close-bar">
+          <button
+            type="button"
+            onClick={() => closeWindow(instance.id as WindowId)}
+            className="mobile-close-sheet-btn"
+          >
+            ✕ CLOSE TAB
+          </button>
+        </div>
         {children}
       </div>
 

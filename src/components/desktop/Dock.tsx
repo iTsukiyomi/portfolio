@@ -12,7 +12,7 @@ export const Dock: React.FC = () => {
       <div className="dock-left">
         <button
           className="start-btn"
-          onClick={() => openWindow('contact')}
+          onClick={() => openWindow('terminal')}
           aria-label="Open Terminal Shell"
         >
           <span style={{ fontSize: 13 }}>▶</span>

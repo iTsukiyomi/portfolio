@@ -17,47 +17,36 @@ async function run() {
   console.log('Starting preview server...');
   const server = spawn('npx', ['vite', 'preview', '--port', '4173'], { stdio: 'inherit' });
 
-  // Wait for server to boot
-  await new Promise((r) => setTimeout(r, 1500));
-
+  await new Promise((r) => setTimeout(r, 2000));
   const browser = await chromium.launch();
 
   try {
-    // 1. Capture Desktop Home across Viewports in Theme: Photocopy
+    // 1. Capture Desktop Home across Viewports in Light Theme
     for (const vp of VIEWPORTS) {
       const page = await browser.newPage({ viewport: { width: vp.width, height: vp.height } });
       await page.goto('http://localhost:4173/portfolio/', { waitUntil: 'networkidle' });
 
-      // Dismiss boot screen if present by pressing Escape
       await page.keyboard.press('Escape');
       await page.waitForTimeout(300);
       await page.evaluate(() => window.scrollTo(0, 0));
       await page.waitForTimeout(100);
 
-      await page.screenshot({ path: `screenshots/home_${vp.name}_photocopy.png` });
-      console.log(`Captured home_${vp.name}_photocopy.png`);
+      await page.screenshot({ path: `screenshots/home_${vp.name}_light.png` });
+      console.log(`Captured home_${vp.name}_light.png`);
       await page.close();
     }
 
-    // 2. Capture Home in Theme: Dusk and Theme: Phosphor at 1440px
+    // 2. Capture Home in Dark Theme at 1440px
     {
       const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
       await page.goto('http://localhost:4173/portfolio/', { waitUntil: 'networkidle' });
-      await page.keyboard.press('Space');
+      await page.keyboard.press('Escape');
       await page.waitForTimeout(200);
 
-      // Switch to Dusk
-      await page.evaluate(() => document.documentElement.setAttribute('data-theme', 'dusk'));
+      await page.evaluate(() => document.documentElement.setAttribute('data-theme', 'dark'));
       await page.waitForTimeout(200);
-      await page.screenshot({ path: 'screenshots/home_1440_dusk.png' });
-      console.log('Captured home_1440_dusk.png');
-
-      // Switch to Phosphor
-      await page.evaluate(() => document.documentElement.setAttribute('data-theme', 'phosphor'));
-      await page.waitForTimeout(200);
-      await page.screenshot({ path: 'screenshots/home_1440_phosphor.png' });
-      console.log('Captured home_1440_phosphor.png');
-
+      await page.screenshot({ path: 'screenshots/home_1440_dark.png' });
+      console.log('Captured home_1440_dark.png');
       await page.close();
     }
 
@@ -65,7 +54,7 @@ async function run() {
     {
       const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
       await page.goto('http://localhost:4173/portfolio/#projects/dueler', { waitUntil: 'networkidle' });
-      await page.keyboard.press('Space');
+      await page.mouse.click(10, 10); // Dismiss boot without pressing Escape
       await page.waitForTimeout(500);
 
       await page.screenshot({ path: 'screenshots/window_dueler_1440.png' });
@@ -73,11 +62,11 @@ async function run() {
       await page.close();
     }
 
-    // 4. Capture Open Window: contact.sh Interactive Terminal Shell
+    // 4. Capture Open Window: contact.sh (Dedicated Contact & Message Dispatch)
     {
       const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
       await page.goto('http://localhost:4173/portfolio/#contact', { waitUntil: 'networkidle' });
-      await page.keyboard.press('Space');
+      await page.mouse.click(10, 10); // Dismiss boot without pressing Escape
       await page.waitForTimeout(500);
 
       await page.screenshot({ path: 'screenshots/window_contact_1440.png' });
@@ -85,28 +74,27 @@ async function run() {
       await page.close();
     }
 
-    // 5. Capture Mobile Open Window (Sheet mode) at 390px
+    // 5. Capture Open Window: terminal.sh (Interactive POSIX Shell with Neofetch)
+    {
+      const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
+      await page.goto('http://localhost:4173/portfolio/#terminal', { waitUntil: 'networkidle' });
+      await page.mouse.click(10, 10); // Dismiss boot without pressing Escape
+      await page.waitForTimeout(500);
+
+      await page.screenshot({ path: 'screenshots/window_terminal_1440.png' });
+      console.log('Captured window_terminal_1440.png');
+      await page.close();
+    }
+
+    // 6. Capture Mobile Open Window (Sheet mode with close buttons) at 390px
     {
       const page = await browser.newPage({ viewport: { width: 390, height: 844 } });
       await page.goto('http://localhost:4173/portfolio/#projects/dueler', { waitUntil: 'networkidle' });
-      await page.keyboard.press('Space');
+      await page.mouse.click(10, 10);
       await page.waitForTimeout(500);
 
       await page.screenshot({ path: 'screenshots/mobile_sheet_390.png' });
       console.log('Captured mobile_sheet_390.png');
-      await page.close();
-    }
-
-    // 6. Test Reduced Motion
-    {
-      const page = await browser.newPage({
-        viewport: { width: 1440, height: 900 },
-        reducedMotion: 'reduce',
-      });
-      await page.goto('http://localhost:4173/portfolio/', { waitUntil: 'networkidle' });
-      await page.waitForTimeout(300);
-      await page.screenshot({ path: 'screenshots/reduced_motion_1440.png' });
-      console.log('Captured reduced_motion_1440.png (boot skipped immediately)');
       await page.close();
     }
   } finally {

@@ -311,37 +311,42 @@
 }
 
 /* Theme-Specific High Contrast Icon Boxes */
-[data-theme='photocopy'] .icon-graphic-box {
-  background: #ffffff;
-  border: 2px solid #0d0f12;
-  box-shadow: 3.5px 3.5px 0 #0d0f12;
+[data-theme='light'] .icon-graphic-box,
+:root:not([data-theme='dark']) .icon-graphic-box {
+  background: #0d0f12 !important;
+  color: #ffffff !important;
+  border: 2px solid #0d0f12 !important;
+  box-shadow: 3.5px 3.5px 0 var(--accent) !important;
 }
-[data-theme='photocopy'] .icon-label {
-  background: #ffffff;
-  border: 1px solid #0d0f12;
-  color: #0d0f12;
+[data-theme='light'] .icon-label,
+:root:not([data-theme='dark']) .icon-label {
+  background: #0d0f12 !important;
+  border: 1.5px solid #0d0f12 !important;
+  color: #ffffff !important;
+  box-shadow: 2px 2px 0 var(--accent) !important;
+}
+[data-theme='light'] .icon-tag-pill,
+:root:not([data-theme='dark']) .icon-tag-pill {
+  background: var(--accent) !important;
+  color: #ffffff !important;
+  border: 1px solid #0d0f12 !important;
 }
 
-[data-theme='dusk'] .icon-graphic-box {
-  background: #0f141a;
-  border: 2px solid #00f0ff;
-  box-shadow: 3.5px 3.5px 0 #000000;
+[data-theme='dark'] .icon-graphic-box {
+  background: #0b0f14 !important;
+  color: #00f0ff !important;
+  border: 2px solid #00f0ff !important;
+  box-shadow: 3.5px 3.5px 0 #000000 !important;
 }
-[data-theme='dusk'] .icon-label {
-  background: #171d26;
-  border: 1px solid #3a4553;
-  color: #e5eaf0;
+[data-theme='dark'] .icon-label {
+  background: #141b24 !important;
+  border: 1.5px solid #3a4553 !important;
+  color: #e5eaf0 !important;
 }
-
-[data-theme='phosphor'] .icon-graphic-box {
-  background: #040604;
-  border: 2px solid #39ff14;
-  box-shadow: 3.5px 3.5px 0 #000000;
-}
-[data-theme='phosphor'] .icon-label {
-  background: #0d120d;
-  border: 1px solid #ffb300;
-  color: #ffb300;
+[data-theme='dark'] .icon-tag-pill {
+  background: #00f0ff !important;
+  color: #000000 !important;
+  border: 1px solid #00f0ff !important;
 }
 
 .icon-tag-pill {

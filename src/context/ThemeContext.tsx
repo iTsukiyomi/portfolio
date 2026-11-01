@@ -1,84 +1,53 @@
 import React, { createContext, useContext, useEffect, useState, useCallback } from 'react';
 
-export type ThemeName = 'photocopy' | 'dusk' | 'phosphor';
-export type ThemeMode = ThemeName | 'auto';
+export type ThemeName = 'light' | 'dark';
 
 interface ThemeContextType {
   theme: ThemeName;
-  mode: ThemeMode;
-  setMode: (mode: ThemeMode) => void;
-  cycleTheme: () => void;
+  toggleTheme: () => void;
+  setTheme: (theme: ThemeName) => void;
 }
 
 const ThemeContext = createContext<ThemeContextType | null>(null);
 
-function getAutoTheme(): ThemeName {
-  const hour = new Date().getHours();
-  if (hour >= 6 && hour < 18) {
-    return 'photocopy';
-  } else if (hour >= 18 && hour < 22) {
-    return 'dusk';
-  } else {
-    return 'phosphor';
-  }
-}
-
-function getStoredTheme(): ThemeMode {
+function getStoredTheme(): ThemeName {
   try {
-    const stored = localStorage.getItem('meet_portfolio_theme') as ThemeMode | null;
-    if (stored === 'photocopy' || stored === 'dusk' || stored === 'phosphor' || stored === 'auto') {
+    const stored = localStorage.getItem('meet_portfolio_theme') as ThemeName | null;
+    if (stored === 'light' || stored === 'dark') {
       return stored;
     }
   } catch {
     // Storage access disabled or blocked
   }
-  return 'auto';
+  return 'light'; // Light is default
 }
 
-function storeTheme(mode: ThemeMode): void {
+function storeTheme(theme: ThemeName): void {
   try {
-    localStorage.setItem('meet_portfolio_theme', mode);
+    localStorage.setItem('meet_portfolio_theme', theme);
   } catch {
     // Ignore storage failure
   }
 }
 
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [mode, setModeState] = useState<ThemeMode>(getStoredTheme);
-  const [activeTheme, setActiveTheme] = useState<ThemeName>(() => {
-    const initialMode = getStoredTheme();
-    return initialMode === 'auto' ? getAutoTheme() : initialMode;
-  });
+  const [theme, setActiveTheme] = useState<ThemeName>(getStoredTheme);
 
-  const setMode = useCallback((newMode: ThemeMode) => {
-    setModeState(newMode);
-    storeTheme(newMode);
-    const resolved = newMode === 'auto' ? getAutoTheme() : newMode;
-    setActiveTheme(resolved);
+  const setTheme = useCallback((newTheme: ThemeName) => {
+    setActiveTheme(newTheme);
+    storeTheme(newTheme);
   }, []);
 
-  const cycleTheme = useCallback(() => {
-    const order: ThemeMode[] = ['photocopy', 'dusk', 'phosphor', 'auto'];
-    const nextIdx = (order.indexOf(mode) + 1) % order.length;
-    setMode(order[nextIdx]);
-  }, [mode, setMode]);
+  const toggleTheme = useCallback(() => {
+    setTheme(theme === 'light' ? 'dark' : 'light');
+  }, [theme, setTheme]);
 
   useEffect(() => {
-    document.documentElement.setAttribute('data-theme', activeTheme);
-  }, [activeTheme]);
-
-  useEffect(() => {
-    if (mode === 'auto') {
-      const interval = setInterval(() => {
-        const next = getAutoTheme();
-        setActiveTheme((prev) => (prev !== next ? next : prev));
-      }, 60000);
-      return () => clearInterval(interval);
-    }
-  }, [mode]);
+    document.documentElement.setAttribute('data-theme', theme);
+  }, [theme]);
 
   return (
-    <ThemeContext.Provider value={{ theme: activeTheme, mode, setMode, cycleTheme }}>
+    <ThemeContext.Provider value={{ theme, toggleTheme, setTheme }}>
       {children}
     </ThemeContext.Provider>
   );

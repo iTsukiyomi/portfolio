@@ -3,7 +3,7 @@ import { useTheme } from '../../context/ThemeContext';
 import { useWindowManager, type WindowId } from '../../context/WindowManagerContext';
 
 export const TopBar: React.FC = () => {
-  const { theme, mode, cycleTheme } = useTheme();
+  const { theme, toggleTheme } = useTheme();
   const { openWindow } = useWindowManager();
   const [timeString, setTimeString] = useState<string>('');
   const [appMenuOpen, setAppMenuOpen] = useState<boolean>(false);
@@ -105,10 +105,10 @@ export const TopBar: React.FC = () => {
       <div className="top-bar-right">
         <button
           className="theme-switcher-btn"
-          onClick={cycleTheme}
-          aria-label={`Current theme: ${theme} (mode: ${mode}). Click to cycle.`}
+          onClick={toggleTheme}
+          aria-label={`Toggle theme. Current theme: ${theme.toUpperCase()}`}
         >
-          THEME: {mode.toUpperCase()} [{theme.toUpperCase()}]
+          THEME: {theme.toUpperCase()}
         </button>
 
         <span className="clock-display" aria-label="Local Time">

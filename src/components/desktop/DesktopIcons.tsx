@@ -74,9 +74,20 @@ const ICONS: IconConfig[] = [
   {
     id: 'contact',
     label: 'contact.sh',
+    typeBadge: 'MSG',
+    renderIcon: () => (
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+        <rect x="3" y="5" width="18" height="14" />
+        <polyline points="3,7 12,13 21,7" stroke="var(--accent)" strokeWidth="2" />
+      </svg>
+    ),
+  },
+  {
+    id: 'terminal',
+    label: 'terminal.sh',
     typeBadge: 'SH',
     renderIcon: () => (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
         <rect x="3" y="4" width="18" height="16" />
         <text x="6" y="15" fill="var(--accent)" fontFamily="var(--font-mono)" fontSize="10" fontWeight="bold">
           $&gt;
@@ -89,7 +100,7 @@ const ICONS: IconConfig[] = [
     label: 'next.txt',
     typeBadge: 'WIP',
     renderIcon: () => (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
         <circle cx="12" cy="12" r="9" strokeDasharray="3 3" />
         <line x1="12" y1="8" x2="12" y2="16" stroke="var(--accent)" strokeWidth="2" />
         <line x1="8" y1="12" x2="16" y2="12" stroke="var(--accent)" strokeWidth="2" />
@@ -101,7 +112,7 @@ const ICONS: IconConfig[] = [
     label: 'resume.pdf',
     typeBadge: 'PDF',
     renderIcon: () => (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
         <path d="M4 3 L15 3 L20 8 L20 21 L4 21 Z" />
         <polyline points="15,3 15,8 20,8" />
         <text x="7" y="16" fill="var(--accent)" fontFamily="var(--font-mono)" fontSize="8" fontWeight="bold">

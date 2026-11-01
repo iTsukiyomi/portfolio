@@ -7,6 +7,7 @@ export type WindowId =
   | 'shedskin'
   | 'about'
   | 'contact'
+  | 'terminal'
   | 'next'
   | 'resume';
 
@@ -72,9 +73,15 @@ const DEFAULT_WINDOWS: Record<WindowId, Omit<WindowInstance, 'isOpen' | 'isMinim
   },
   contact: {
     id: 'contact',
-    title: 'contact.sh — Interactive Shell',
-    position: { x: 230, y: 85 },
-    size: { width: 750, height: 510 },
+    title: 'contact.sh — Get In Touch',
+    position: { x: 230, y: 70 },
+    size: { width: 820, height: 600 },
+  },
+  terminal: {
+    id: 'terminal',
+    title: 'terminal.sh — Interactive Shell',
+    position: { x: 250, y: 80 },
+    size: { width: 760, height: 500 },
   },
   next: {
     id: 'next',

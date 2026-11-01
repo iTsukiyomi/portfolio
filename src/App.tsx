@@ -8,6 +8,7 @@ import { ContextMenu } from './components/desktop/ContextMenu';
 import { Window } from './components/windows/Window';
 import { ProjectCaseStudy } from './components/windows/ProjectCaseStudy';
 import { AboutView } from './components/windows/AboutView';
+import { ContactView } from './components/windows/ContactView';
 import { TerminalView } from './components/terminal/TerminalView';
 import { NextView } from './components/windows/NextView';
 import { ResumeView } from './components/windows/ResumeView';
@@ -220,6 +221,8 @@ const DesktopWorkspace: React.FC = () => {
           } else if (win.id === 'about') {
             content = <AboutView />;
           } else if (win.id === 'contact') {
+            content = <ContactView />;
+          } else if (win.id === 'terminal') {
             content = <TerminalView />;
           } else if (win.id === 'resume') {
             content = <ResumeView />;

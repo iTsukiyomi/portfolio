@@ -1,7 +1,7 @@
 /* Design Tokens — Meet Rathod Portfolio */
 
-:root {
-  /* Default Theme: Photocopy (Cold Architectural Newsprint / NeXT Zinc) */
+:root, [data-theme='light'] {
+  /* Light Theme (Default: Cold Architectural Newsprint) */
   --bg: #e2e4e8;
   --surface: #edf0f4;
   --surface-alt: #d8dce2;
@@ -9,9 +9,9 @@
   --ink-muted: #1e293b;
   --border: #0d0f12;
   --accent: #ff3800;
-  --accent-contrast: #000000;
+  --accent-contrast: #ffffff;
   --shadow-color: #0d0f12;
-  --grid-line: rgba(13, 15, 18, 0.12);
+  --grid-line: rgba(13, 15, 18, 0.1);
   --titlebar-bg: #d8dce2;
   --titlebar-active: #0d0f12;
   --titlebar-active-text: #edf0f4;
@@ -30,14 +30,14 @@
   --font-display: 'Cabinet Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: 'Martian Mono', ui-monospace, monospace;
 
-  /* Fluid Type Scale (5 tightly controlled sizes) */
+  /* Fluid Type Scale */
   --text-hero: clamp(3.25rem, 8vw + 0.5rem, 7.5rem);
   --text-h1: clamp(2rem, 4vw + 0.25rem, 3.25rem);
   --text-h2: clamp(1.35rem, 2vw + 0.2rem, 1.85rem);
   --text-body: clamp(0.95rem, 0.4vw + 0.85rem, 1.125rem);
   --text-meta: 0.8125rem;
 
-  /* Motion Curves (No generic linear, no default ease) */
+  /* Motion Curves */
   --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-sharp: cubic-bezier(0.25, 1, 0.5, 1);
   --ease-in-out: cubic-bezier(0.76, 0, 0.24, 1);
@@ -51,44 +51,23 @@
   --max-content-width: 1480px;
 }
 
-/* Theme: Dusk (Industrial Blueprint / Cold Iron) */
-[data-theme='dusk'] {
-  --bg: #1c2229;
-  --surface: #242c35;
-  --surface-alt: #171c22;
+/* Dark Theme (Industrial Slate Iron / SGI Blueprint) */
+[data-theme='dark'] {
+  --bg: #161c23;
+  --surface: #202731;
+  --surface-alt: #12161c;
   --ink: #e5eaf0;
-  --ink-muted: #8292a4;
+  --ink-muted: #8ea0b5;
   --border: #3a4553;
   --accent: #00f0ff;
   --accent-contrast: #000000;
-  --shadow-color: #090c0f;
-  --grid-line: rgba(229, 234, 240, 0.08);
-  --titlebar-bg: #1f252d;
+  --shadow-color: #080c10;
+  --grid-line: rgba(229, 234, 240, 0.07);
+  --titlebar-bg: #192029;
   --titlebar-active: #00f0ff;
   --titlebar-active-text: #000000;
-  --terminal-bg: #11151a;
+  --terminal-bg: #0d1217;
   --terminal-text: #e5eaf0;
   --terminal-prompt: #00f0ff;
   --code-bg: rgba(0, 240, 255, 0.05);
-}
-
-/* Theme: Phosphor (Cathode Ray Amber / Anti-Glare CRT) */
-[data-theme='phosphor'] {
-  --bg: #0d100d;
-  --surface: #141a13;
-  --surface-alt: #080b08;
-  --ink: #ffb300;
-  --ink-muted: #947016;
-  --border: #3d2f08;
-  --accent: #39ff14;
-  --accent-contrast: #000000;
-  --shadow-color: #000000;
-  --grid-line: rgba(255, 179, 0, 0.1);
-  --titlebar-bg: #121711;
-  --titlebar-active: #ffb300;
-  --titlebar-active-text: #0d100d;
-  --terminal-bg: #070907;
-  --terminal-text: #ffb300;
-  --terminal-prompt: #39ff14;
-  --code-bg: rgba(255, 179, 0, 0.05);
 }
