@@ -12,7 +12,6 @@ const TOPIC_PRESETS = [
 
 export const ContactPageView: React.FC = () => {
   const [copiedEmail, setCopiedEmail] = useState<boolean>(false);
-  const [copiedPhone, setCopiedPhone] = useState<boolean>(false);
   const [copiedDiscord, setCopiedDiscord] = useState<boolean>(false);
   const [copiedDraft, setCopiedDraft] = useState<boolean>(false);
 
@@ -73,7 +72,7 @@ export const ContactPageView: React.FC = () => {
         break;
       case 'contact':
       case 'email':
-        response = 'Email: meetr459@gmail.com | Phone: +91 8591424976';
+        response = 'Email: meetr459@gmail.com | Discord: kaizen__009';
         break;
       case 'clear':
         setTerminalOutput([]);
@@ -129,46 +128,18 @@ export const ContactPageView: React.FC = () => {
             </div>
           </div>
 
-          {/* Phone Card */}
-          <div className="content-card" style={{ marginBottom: 0 }}>
-            <span className="pill-badge">PHONE / WHATSAPP</span>
-            <div style={{ fontSize: 15, fontWeight: 800, margin: '8px 0 4px 0' }}>
-              +91 8591424976
-            </div>
-            <p style={{ fontSize: 12, color: 'var(--ink-muted)', marginBottom: 14 }}>
-              Direct phone line and WhatsApp for quick communication.
-            </p>
-            <div style={{ display: 'flex', gap: 8 }}>
-              <button
-                type="button"
-                onClick={() => copyToClipboard('8591424976', setCopiedPhone)}
-                className="btn-secondary"
-                style={{ padding: '6px 10px', fontSize: 11 }}
-              >
-                {copiedPhone ? '✓ Copied' : 'Copy Phone'}
-              </button>
-              <a
-                href="tel:8591424976"
-                className="btn-primary"
-                style={{ padding: '6px 12px', fontSize: 11 }}
-              >
-                Call ↗
-              </a>
-            </div>
-          </div>
-
           {/* Discord Card */}
           <div className="content-card" style={{ marginBottom: 0 }}>
             <span className="pill-badge">DISCORD</span>
             <div style={{ fontSize: 15, fontWeight: 800, margin: '8px 0 4px 0' }}>
-              iTsukiyomi <span style={{ color: 'var(--ink-muted)', fontSize: 12 }}>(Gojo)</span>
+              kaizen__009 <span style={{ color: 'var(--ink-muted)', fontSize: 12 }}>(Gojo)</span>
             </div>
             <p style={{ fontSize: 12, color: 'var(--ink-muted)', marginBottom: 14 }}>
               Active on Discord for bot dev, testing, and casual discussions.
             </p>
             <button
               type="button"
-              onClick={() => copyToClipboard('iTsukiyomi', setCopiedDiscord)}
+              onClick={() => copyToClipboard('kaizen__009', setCopiedDiscord)}
               className="btn-secondary"
               style={{ width: '100%', padding: '6px 10px', fontSize: 11, textAlign: 'center', justifyContent: 'center' }}
             >

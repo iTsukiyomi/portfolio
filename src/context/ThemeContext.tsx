@@ -10,6 +10,13 @@ interface ThemeContextType {
 
 const ThemeContext = createContext<ThemeContextType | null>(null);
 
+function getSystemTheme(): ThemeName {
+  if (typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    return 'dark';
+  }
+  return 'light';
+}
+
 function getStoredTheme(): ThemeName {
   try {
     const stored = localStorage.getItem('meet_portfolio_theme') as ThemeName | null;
@@ -19,7 +26,8 @@ function getStoredTheme(): ThemeName {
   } catch {
     // Storage access disabled or blocked
   }
-  return 'light'; // Light is default
+  // If user hasn't set an explicit preference, follow device default
+  return getSystemTheme();
 }
 
 function storeTheme(theme: ThemeName): void {
@@ -45,6 +53,24 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
   }, [theme]);
+
+  // Listen to device/OS theme preference changes if user hasn't stored a manual override
+  useEffect(() => {
+    try {
+      if (localStorage.getItem('meet_portfolio_theme')) return;
+    } catch {
+      // Ignore
+    }
+
+    if (typeof window === 'undefined' || !window.matchMedia) return;
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    const handleDeviceThemeChange = (e: MediaQueryListEvent) => {
+      setActiveTheme(e.matches ? 'dark' : 'light');
+    };
+
+    mediaQuery.addEventListener('change', handleDeviceThemeChange);
+    return () => mediaQuery.removeEventListener('change', handleDeviceThemeChange);
+  }, []);
 
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme, setTheme }}>

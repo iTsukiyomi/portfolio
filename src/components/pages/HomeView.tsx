@@ -23,8 +23,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
           </div>
 
           <div style={{ fontSize: 12, color: 'var(--ink-muted)', textAlign: 'right' }}>
-            <div>HANDLES: Gojo / iTsukiyomi</div>
-            <div>LOC: Mumbai, India [UTC+5:30]</div>
+            <div>Mumbai, India [UTC+5:30]</div>
           </div>
         </div>
 

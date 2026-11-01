@@ -31,7 +31,7 @@ export const ResumePageView: React.FC = () => {
           </div>
           <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap', fontSize: 12, marginTop: 8 }}>
             <span>Email: <a href="mailto:meetr459@gmail.com">meetr459@gmail.com</a></span>
-            <span>Phone: <a href="tel:8591424976">+91 8591424976</a></span>
+            <span>Discord: <strong>kaizen__009</strong></span>
             <span>GitHub: <a href="https://github.com/iTsukiyomi" target="_blank" rel="noreferrer">github.com/iTsukiyomi</a></span>
             <span>LinkedIn: <a href="https://www.linkedin.com/in/meet-rathod-a1326a448/" target="_blank" rel="noreferrer">in/meet-rathod</a></span>
           </div>

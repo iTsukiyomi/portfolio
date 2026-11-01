@@ -434,7 +434,7 @@ export const PROFILE_DATA = {
   handles: {
     github: 'iTsukiyomi',
     alias: 'Gojo',
-    discord: 'iTsukiyomi',
+    discord: 'kaizen__009',
   },
   title: 'Systems & Bot Engineer // BSc IT Student',
   status: 'FIRST-YEAR BSC IT // LINUX (OMARCHY) // BUILDING FINISHED SOFTWARE',
