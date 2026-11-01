@@ -41,7 +41,7 @@ const DesktopWorkspace: React.FC = () => {
         <div
           className="desktop-hero-centerpiece"
           style={{
-            opacity: hasOpenWindows ? 0.25 : 1,
+            opacity: hasOpenWindows ? 0.2 : 1,
             transition: 'opacity 250ms var(--ease-sharp)',
             pointerEvents: hasOpenWindows ? 'none' : 'auto',
           }}
@@ -49,18 +49,18 @@ const DesktopWorkspace: React.FC = () => {
         >
           <div className="desktop-system-badge">
             <div className="system-badge-header">
-              <span>OMARCHY OS v7.2.5 [READY]</span>
-              <span>DEV RIG // MUMBAI, IN</span>
+              <span>MEET RATHOD // PORTFOLIO</span>
+              <span>MUMBAI, INDIA</span>
             </div>
 
             <h1 className="system-badge-title">
               MEET RATHOD
               <br />
-              <span style={{ color: 'var(--accent)' }}>// RETRO WORKSPACE</span>
+              <span style={{ color: 'var(--accent)' }}>// MY WORKSPACE</span>
             </h1>
 
             <p className="system-badge-desc">
-              First-year BSc IT student engineering Discord bot architectures, C++20 media tools, and physics controllers on Arch Linux. Double-click any file icon on the left or select an entry point below:
+              First-year BSc IT student. I build Discord bots, C++ terminal tools, and game mechanics. Click any icon on the left or launch below:
             </p>
 
             <div className="system-quick-actions">
@@ -69,42 +69,42 @@ const DesktopWorkspace: React.FC = () => {
                 className="desktop-action-btn featured"
                 onClick={() => openWindow('dueler')}
               >
-                [01. DUELER.BOT]
+                [POKÉMON DUEL]
               </button>
               <button
                 type="button"
                 className="desktop-action-btn"
                 onClick={() => openWindow('mafioso')}
               >
-                [02. MAFIOSO.PY]
+                [MAFIOSO]
               </button>
               <button
                 type="button"
                 className="desktop-action-btn"
                 onClick={() => openWindow('ani-cpp')}
               >
-                [03. ANI-CLI.CPP]
+                [ANI-CLI C++]
               </button>
               <button
                 type="button"
                 className="desktop-action-btn"
                 onClick={() => openWindow('shedskin')}
               >
-                [04. SHEDSKIN]
+                [SHEDSKIN]
               </button>
               <button
                 type="button"
                 className="desktop-action-btn"
                 onClick={() => openWindow('contact')}
               >
-                [SHELL: CONTACT.SH]
+                [TERMINAL]
               </button>
               <button
                 type="button"
                 className="desktop-action-btn"
                 onClick={() => openWindow('about')}
               >
-                [ABOUT.TXT]
+                [ABOUT ME]
               </button>
             </div>
           </div>
@@ -114,7 +114,7 @@ const DesktopWorkspace: React.FC = () => {
         <div className="desktop-watermark" aria-hidden="true">
           <div className="watermark-title">MEET RATHOD</div>
           <div className="watermark-sub">
-            ARCH LINUX // OMARCHY 7.2 // SYSTEMS &amp; BOT ARCHITECTURE
+            ARCH LINUX // SYSTEMS &amp; BOT ARCHITECTURE
           </div>
         </div>
 

@@ -27,13 +27,13 @@ export interface CaseStudy {
 export const PROJECTS_DATA: Record<string, CaseStudy> = {
   dueler: {
     id: 'dueler',
-    title: 'Pokémon Duel — Discord Turn-Based Battle Engine',
-    shortDesc: 'Asynchronous tactical Pokémon combat engine on Discord with battle AI and companion team builder.',
-    typeTag: 'BOT_ENGINE // ASYNCIO',
+    title: 'Pokémon Duel — Discord Battle Engine',
+    shortDesc: 'Turn-based battle simulator on Discord with switch-prediction AI and web team builder.',
+    typeTag: 'BOT // ASYNCIO',
     repoUrl: 'https://github.com/iTsukiyomi/pypoke',
     demoUrl: 'https://github.com/iTsukiyomi/dueler',
     problem:
-      'Most Discord combat bots are stateless RNG wrappers where players spam an attack button until someone runs out of HP. We needed a true battle simulator modeling competitive Pokémon mechanics: speed priority brackets, physical/special damage split, stat stages (-6 to +6), weather state, and an AI opponent that predicts type switches under Discord API rate limits.',
+      'Most Discord combat bots are simple RNG button-mashers. I wanted a true battle simulator modeling competitive Gen 4 mechanics: speed priority brackets, physical/special damage split, stat stages (-6 to +6), and weather effects, with an AI opponent predicting switches under Discord API limits.',
     architectureDiagramSvg: `<svg viewBox="0 0 720 220" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: auto; max-width: 700px; display: block; margin: 0 auto;">
   <rect width="720" height="220" fill="transparent"/>
   <!-- Discord Layer -->
@@ -120,13 +120,13 @@ KeyError: 'damage_class'
 
   mafioso: {
     id: 'mafioso',
-    title: 'Mafioso — Discord Hidden-Role Social Deduction Bot',
-    shortDesc: 'Asynchronous Mafia/Werewolf engine modeled after Mafia Remastered with strict phase timers and role state machines.',
-    typeTag: 'STATE_MACHINE // MONGODB',
+    title: 'Mafioso — Discord Mafia Bot',
+    shortDesc: 'Discord social deduction bot running 8 to 16 player matches with strict phase timers and atomic voting.',
+    typeTag: 'BOT // MONGODB',
     repoUrl: 'https://github.com/iTsukiyomi/mafia-asssistant',
     demoUrl: 'https://github.com/iTsukiyomi/Mafia',
     problem:
-      'Hidden-role games on chat platforms collapse if timers drift, night actions leak through status messages, or players hammer votes simultaneously. We needed an authoritative state machine coordinating Day Discussion, Voting Hammer, Night Action Queues, and win-condition evaluations for 8 to 16 players without blocking the bot process.',
+      'Discord hidden-role games break when timers drift or players hammer votes simultaneously. I built a state machine handling Day Discussion, Voting, and Night Actions with atomic Redis locks to prevent duplicate votes.',
     architectureDiagramSvg: `<svg viewBox="0 0 720 180" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: auto; max-width: 700px; display: block; margin: 0 auto;">
   <rect width="720" height="180" fill="transparent"/>
   <!-- States -->
@@ -216,12 +216,12 @@ asyncio.exceptions.CancelledError
 
   'ani-cpp': {
     id: 'ani-cpp',
-    title: 'ani-cli.cpp — Native C++20 Media Streamer & TUI',
-    shortDesc: 'Ultra-lightweight native C++ port of the popular ani-cli media streaming terminal interface.',
-    typeTag: 'SYSTEMS // C++20 // POSIX',
+    title: 'ani-cli.cpp — Native C++20 Media Streamer',
+    shortDesc: 'Native C++20 terminal streaming tool with sub-6ms startup and zero dependencies.',
+    typeTag: 'SYSTEMS // C++20',
     repoUrl: 'https://github.com/iTsukiyomi/ani-cpp',
     problem:
-      'The original ani-cli shell script relied on an unstable chain of curl, grep, sed, fzf, and awk. On minimal Linux systems or Windows, script dependencies broke frequently, search scraping was sluggish, and process management was fragile. I engineered a zero-dependency native C++20 binary with an integrated ANSI VT100 interactive interface.',
+      'The original shell script broke on non-standard setups due to its fragile chain of curl, grep, sed, and fzf. I built a native C++20 port with a custom ANSI VT100 terminal interface and automated POSIX process management.',
     architectureDiagramSvg: `<svg viewBox="0 0 720 180" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: auto; max-width: 700px; display: block; margin: 0 auto;">
   <rect width="720" height="180" fill="transparent"/>
   <!-- Pipeline -->
@@ -299,12 +299,12 @@ Process table: 1024 defunct 'mpv' processes detected.`,
   shedskin: {
     id: 'shedskin',
     title: 'SHEDSKIN — Metroidvania in Unity 6',
-    shortDesc: 'Fast-paced 2D Metroidvania built from a complete GDD featuring kinematic skin-shedding decoy mechanics and normal-mapped 2D URP lighting.',
-    typeTag: 'GAME_DEV // UNITY 6 // 2D URP',
+    shortDesc: '2D Metroidvania with a custom 16-ray kinematic physics solver and skin-shedding decoy mechanics.',
+    typeTag: 'GAME // UNITY 6',
     repoUrl: 'https://github.com/iTsukiyomi/peakclover',
     demoUrl: 'https://github.com/iTsukiyomi/platformer',
     problem:
-      'Unity built-in Rigidbody2D physics feels floaty and imprecise for high-speed action platformers. We needed a deterministic, pixel-tight kinematic controller with variable jump height, coyote time, wall slide friction, and a signature "skin-shedding" mechanic where the player sheds their exoskeleton as a decoy to dodge fatal damage.',
+      'Unity default Rigidbody2D physics feels floaty for fast platformers. I built a deterministic 16-ray kinematic controller with variable jump height, coyote time, and a skin-shedding mechanic where the player sheds their exoskeleton as a decoy to dodge damage.',
     architectureDiagramSvg: `<svg viewBox="0 0 720 180" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: auto; max-width: 700px; display: block; margin: 0 auto;">
   <rect width="720" height="180" fill="transparent"/>
   <!-- Controller Pipeline -->

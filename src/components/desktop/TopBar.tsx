@@ -39,7 +39,7 @@ export const TopBar: React.FC = () => {
           aria-expanded={appMenuOpen}
           aria-label="Application Menu"
         >
-          RATHOD // VOL. 01 ▾
+          MEET RATHOD ▾
         </button>
 
         {appMenuOpen && (
@@ -59,13 +59,14 @@ export const TopBar: React.FC = () => {
             aria-label="Applications"
           >
             {[
-              { id: 'dueler', label: '1. dueler.bot (Pokémon AI)' },
-              { id: 'mafioso', label: '2. mafioso.py (Social Deduction)' },
-              { id: 'ani-cpp', label: '3. ani-cli.cpp (C++ Media Tool)' },
-              { id: 'shedskin', label: '4. shedskin (Unity 6 Platformer)' },
-              { id: 'about', label: '5. about.txt (Profile & Scars)' },
-              { id: 'contact', label: '6. contact.sh (Terminal Shell)' },
-              { id: 'next', label: '7. next.txt (Next Projects)' },
+              { id: 'dueler', label: '1. Pokémon Duel (Discord Bot)' },
+              { id: 'mafioso', label: '2. Mafioso (Discord Bot)' },
+              { id: 'ani-cpp', label: '3. ani-cli.cpp (Media Tool)' },
+              { id: 'shedskin', label: '4. SHEDSKIN (Platformer)' },
+              { id: 'about', label: '5. About Me (Bio)' },
+              { id: 'contact', label: '6. Terminal (contact.sh)' },
+              { id: 'next', label: '7. Next Projects (R&D)' },
+              { id: 'resume', label: '8. Resume (PDF)' },
             ].map((item) => (
               <button
                 key={item.id}

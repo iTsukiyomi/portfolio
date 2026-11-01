@@ -168,6 +168,25 @@ export const WindowManagerProvider: React.FC<{ children: React.ReactNode }> = ({
     return initial as Record<WindowId, WindowInstance>;
   });
 
+  // Calculate dynamic centered geometry for any viewport
+  const getCenteredGeometry = useCallback((targetSize: { width: number; height: number }) => {
+    const topBarHeight = 44;
+    const dockHeight = 52;
+    const availW = typeof window !== 'undefined' ? window.innerWidth : 1440;
+    const availH = typeof window !== 'undefined' ? window.innerHeight - topBarHeight - dockHeight : 800;
+
+    const w = Math.min(targetSize.width, Math.max(340, availW - 40));
+    const h = Math.min(targetSize.height, Math.max(300, availH - 30));
+
+    const centerX = Math.max(16, Math.round((availW - w) / 2));
+    const centerY = Math.max(topBarHeight + 8, Math.round(topBarHeight + (availH - h) / 2));
+
+    return {
+      position: { x: centerX, y: centerY },
+      size: { width: w, height: h },
+    };
+  }, []);
+
   // Clamp window position inside viewport boundaries
   const clampPosition = useCallback((pos: { x: number; y: number }, _size?: { width: number; height: number }) => {
     const topBarHeight = 44;
@@ -214,7 +233,7 @@ export const WindowManagerProvider: React.FC<{ children: React.ReactNode }> = ({
     setWindows((prev) => {
       const current = prev[id];
       if (!current) return prev;
-      const safePos = clampPosition(current.position);
+      const centered = getCenteredGeometry(current.size);
 
       return {
         ...prev,
@@ -223,7 +242,8 @@ export const WindowManagerProvider: React.FC<{ children: React.ReactNode }> = ({
           isOpen: true,
           isMinimized: false,
           zIndex: nextZ,
-          position: safePos,
+          position: centered.position,
+          size: centered.size,
         },
       };
     });
@@ -234,7 +254,7 @@ export const WindowManagerProvider: React.FC<{ children: React.ReactNode }> = ({
     if (window.location.hash !== targetHash && window.location.hash !== `#${id}`) {
       window.history.replaceState(null, '', targetHash);
     }
-  }, [clampPosition]);
+  }, [getCenteredGeometry]);
 
   const closeWindow = useCallback((id: WindowId) => {
     // 1. Clear hash immediately if this window was represented in the URL
