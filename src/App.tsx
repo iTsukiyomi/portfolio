@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { ThemeProvider } from './context/ThemeContext';
-import { WindowManagerProvider, useWindowManager, type WindowId } from './context/WindowManagerContext';
+import { WindowManagerProvider, useWindowManager } from './context/WindowManagerContext';
 import { TopBar } from './components/desktop/TopBar';
 import { DesktopIcons } from './components/desktop/DesktopIcons';
 import { Dock } from './components/desktop/Dock';
@@ -17,23 +17,6 @@ import { PROJECTS_DATA } from './data/portfolioData';
 const DesktopWorkspace: React.FC = () => {
   const { openWindowList, openWindow } = useWindowManager();
   const [bootFinished, setBootFinished] = useState<boolean>(false);
-
-  // When boot finishes, check if URL has an explicit project/page hash
-  useEffect(() => {
-    if (bootFinished) {
-      const hash = window.location.hash.replace(/^#\/?/, '').replace(/^projects\//, '');
-      if (
-        hash &&
-        (hash in PROJECTS_DATA ||
-          hash === 'about' ||
-          hash === 'contact' ||
-          hash === 'resume' ||
-          hash === 'next')
-      ) {
-        openWindow(hash as WindowId);
-      }
-    }
-  }, [bootFinished, openWindow]);
 
   const hasOpenWindows = openWindowList.length > 0;
 

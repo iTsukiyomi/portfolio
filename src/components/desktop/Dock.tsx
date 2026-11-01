@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useWindowManager, type WindowId } from '../../context/WindowManagerContext';
 
 export const Dock: React.FC = () => {
-  const { windows, focusedWindowId, focusWindow, openWindow } = useWindowManager();
+  const { windows, focusedWindowId, focusWindow, closeWindow, openWindow } = useWindowManager();
   const [showRawStats, setShowRawStats] = useState<boolean>(false);
 
   const openList = Object.values(windows).filter((w) => w.isOpen);
@@ -22,12 +22,17 @@ export const Dock: React.FC = () => {
         {openList.map((win) => {
           const isFocused = focusedWindowId === win.id && !win.isMinimized;
           return (
-            <button
+            <div
               key={win.id}
               className={`dock-item-btn ${isFocused ? 'active' : ''} ${win.isMinimized ? 'minimized' : ''}`}
               onClick={() => focusWindow(win.id as WindowId)}
-              aria-label={`Switch to ${win.title}`}
-              aria-current={isFocused ? 'page' : undefined}
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: 6,
+                padding: '0 6px 0 10px',
+                cursor: 'pointer',
+              }}
             >
               <span
                 style={{
@@ -38,7 +43,42 @@ export const Dock: React.FC = () => {
                 }}
               />
               <span>{win.id}</span>
-            </button>
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  closeWindow(win.id as WindowId);
+                }}
+                title={`Close ${win.id}`}
+                aria-label={`Close ${win.id}`}
+                style={{
+                  marginLeft: 4,
+                  padding: '0 4px',
+                  background: 'transparent',
+                  border: 'none',
+                  color: 'inherit',
+                  fontFamily: 'var(--font-mono)',
+                  fontSize: 13,
+                  fontWeight: 900,
+                  cursor: 'pointer',
+                  lineHeight: 1,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  opacity: 0.75,
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.opacity = '1';
+                  e.currentTarget.style.color = '#ff3800';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.opacity = '0.75';
+                  e.currentTarget.style.color = 'inherit';
+                }}
+              >
+                ×
+              </button>
+            </div>
           );
         })}
       </div>

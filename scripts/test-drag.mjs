@@ -78,6 +78,32 @@ async function testDrag() {
     }
     console.log('✓ Multiple windows opened and stacked cleanly!');
 
+    // 5. Test closing via dock tab close button
+    console.log('Testing close via bottom dock tab button...');
+    const dockCloseBtn = page.locator('button[aria-label="Close mafioso"]');
+    await dockCloseBtn.click();
+    await page.waitForTimeout(400);
+
+    const countAfterDockClose = await page.locator('article.os-window-frame').count();
+    console.log('Open windows after dock close:', countAfterDockClose);
+    if (countAfterDockClose !== 1) {
+      throw new Error(`Expected 1 open window after dock close, found ${countAfterDockClose}`);
+    }
+    console.log('✓ Dock tab close button successfully closed window!');
+
+    // 6. Close the remaining contact window via titlebar
+    console.log('Closing final window via titlebar [×]...');
+    const contactCloseBtn = page.locator('article.os-window-frame button.win-control-btn.close');
+    await contactCloseBtn.click();
+    await page.waitForTimeout(400);
+
+    const countAfterAllClose = await page.locator('article.os-window-frame').count();
+    console.log('Open windows after closing all:', countAfterAllClose);
+    if (countAfterAllClose !== 0) {
+      throw new Error(`Expected 0 open windows, found ${countAfterAllClose}`);
+    }
+    console.log('✓ All windows closed cleanly!');
+
     console.log('\nDRAGGING AND WINDOW CONTROL TESTS ALL PASSED! ✓');
   } finally {
     await browser.close();

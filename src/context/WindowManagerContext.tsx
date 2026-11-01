@@ -140,7 +140,7 @@ function saveLayout(windows: Record<WindowId, WindowInstance>): void {
 }
 
 export const WindowManagerProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [maxZ, setMaxZ] = useState(10);
+  const maxZRef = useRef<number>(10);
   const [focusedWindowId, setFocusedWindowId] = useState<WindowId | null>(null);
   const focusedRef = useRef<WindowId | null>(null);
 
@@ -182,20 +182,19 @@ export const WindowManagerProvider: React.FC<{ children: React.ReactNode }> = ({
   }, []);
 
   const focusWindow = useCallback((id: WindowId) => {
-    setMaxZ((prevMax) => {
-      const nextZ = prevMax + 1;
-      setWindows((prev) => {
-        if (!prev[id]) return prev;
-        return {
-          ...prev,
-          [id]: {
-            ...prev[id],
-            isMinimized: false,
-            zIndex: nextZ,
-          },
-        };
-      });
-      return nextZ;
+    maxZRef.current += 1;
+    const nextZ = maxZRef.current;
+
+    setWindows((prev) => {
+      if (!prev[id]) return prev;
+      return {
+        ...prev,
+        [id]: {
+          ...prev[id],
+          isMinimized: false,
+          zIndex: nextZ,
+        },
+      };
     });
 
     setFocusedWindowId(id);
@@ -209,17 +208,13 @@ export const WindowManagerProvider: React.FC<{ children: React.ReactNode }> = ({
   }, []);
 
   const openWindow = useCallback((id: WindowId) => {
-    console.log('openWindow called for:', id);
+    maxZRef.current += 1;
+    const nextZ = maxZRef.current;
+
     setWindows((prev) => {
       const current = prev[id];
       if (!current) return prev;
-
-      // Bring to front and ensure open and un-minimized
-      const nextZ = maxZ + 1;
-      setMaxZ(nextZ);
-
-      // Clamp initial position
-      const safePos = clampPosition(current.position, current.size);
+      const safePos = clampPosition(current.position);
 
       return {
         ...prev,
@@ -239,10 +234,16 @@ export const WindowManagerProvider: React.FC<{ children: React.ReactNode }> = ({
     if (window.location.hash !== targetHash && window.location.hash !== `#${id}`) {
       window.history.replaceState(null, '', targetHash);
     }
-  }, [maxZ, clampPosition]);
+  }, [clampPosition]);
 
   const closeWindow = useCallback((id: WindowId) => {
-    console.log('closeWindow called for:', id);
+    // 1. Clear hash immediately if this window was represented in the URL
+    const currentHash = window.location.hash.replace(/^#\/?/, '').replace(/^projects\//, '');
+    if (currentHash === id) {
+      window.history.replaceState(null, '', window.location.pathname + window.location.search);
+    }
+
+    // 2. Mark window closed in state
     setWindows((prev) => {
       const current = prev[id];
       if (!current) return prev;
@@ -256,25 +257,15 @@ export const WindowManagerProvider: React.FC<{ children: React.ReactNode }> = ({
       };
     });
 
+    // 3. Clear focus
     setFocusedWindowId((prevFocused) => {
       if (prevFocused !== id) return prevFocused;
-      // Focus next open window with highest zIndex
-      const remainingOpen = Object.values(windows).filter(
-        (w) => w.isOpen && !w.isMinimized && w.id !== id
-      );
-      if (remainingOpen.length === 0) {
-        if (window.location.hash) {
-          window.history.replaceState(null, '', window.location.pathname);
-        }
-        return null;
-      }
-      remainingOpen.sort((a, b) => b.zIndex - a.zIndex);
-      const nextFocused = remainingOpen[0].id;
-      focusedRef.current = nextFocused;
-      window.history.replaceState(null, '', `#projects/${nextFocused}`);
-      return nextFocused;
+      return null;
     });
-  }, [windows]);
+    if (focusedRef.current === id) {
+      focusedRef.current = null;
+    }
+  }, []);
 
   const minimizeWindow = useCallback((id: WindowId) => {
     setWindows((prev) => {
@@ -291,14 +282,12 @@ export const WindowManagerProvider: React.FC<{ children: React.ReactNode }> = ({
 
     setFocusedWindowId((prevFocused) => {
       if (prevFocused !== id) return prevFocused;
-      const remaining = Object.values(windows).filter(
-        (w) => w.isOpen && !w.isMinimized && w.id !== id
-      );
-      if (remaining.length === 0) return null;
-      remaining.sort((a, b) => b.zIndex - a.zIndex);
-      return remaining[0].id;
+      return null;
     });
-  }, [windows]);
+    if (focusedRef.current === id) {
+      focusedRef.current = null;
+    }
+  }, []);
 
   const toggleMaximizeWindow = useCallback((id: WindowId) => {
     setWindows((prev) => {
@@ -306,7 +295,6 @@ export const WindowManagerProvider: React.FC<{ children: React.ReactNode }> = ({
       if (!current) return prev;
 
       if (current.isMaximized) {
-        // Restore previous dimensions
         return {
           ...prev,
           [id]: {
@@ -317,7 +305,6 @@ export const WindowManagerProvider: React.FC<{ children: React.ReactNode }> = ({
           },
         };
       } else {
-        // Maximize to viewport leaving topbar & dock
         const topBarHeight = 44;
         const dockHeight = 52;
         return {
@@ -402,24 +389,29 @@ export const WindowManagerProvider: React.FC<{ children: React.ReactNode }> = ({
     focusWindow(openList[nextIndex].id);
   }, [windows, focusedWindowId, focusWindow]);
 
-  // Synchronize with URL hash on mount and hashchange
+  // Keep stable ref for openWindow
+  const openWindowRef = useRef(openWindow);
+  useEffect(() => {
+    openWindowRef.current = openWindow;
+  }, [openWindow]);
+
+  // Synchronize with URL hash on mount and hashchange ONLY (mounts once)
   useEffect(() => {
     const handleHashSync = () => {
       const hash = window.location.hash.replace(/^#\/?/, '').replace(/^projects\//, '');
       if (hash && hash in DEFAULT_WINDOWS) {
-        openWindow(hash as WindowId);
+        openWindowRef.current(hash as WindowId);
       }
     };
 
     handleHashSync();
     window.addEventListener('hashchange', handleHashSync);
     return () => window.removeEventListener('hashchange', handleHashSync);
-  }, [openWindow]);
+  }, []);
 
   // Global Keyboard shortcuts: Esc closes focused window, Alt+Tab cycles
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      console.log('WindowManager keydown:', e.key, 'focusedRef:', focusedRef.current);
       if (e.key === 'Escape' && focusedRef.current) {
         closeWindow(focusedRef.current);
       } else if (e.altKey && e.key === 'Tab') {

@@ -40,15 +40,17 @@ export const Window: React.FC<WindowProps> = ({ instance, children }) => {
 
     const [draggable] = Draggable.create(el, {
       trigger: trigger,
+      cancel: '.win-control-btn, .titlebar-controls', // Exclude controls from dragging
+      dragClickables: false,
       type: 'x,y',
       edgeResistance: 0.75,
       cursor: 'grab',
       activeCursor: 'grabbing',
-      zIndexBoost: false, // Handled by WindowManager zIndex
+      zIndexBoost: false,
       bounds: {
         minX: 10,
         maxX: window.innerWidth - 120,
-        minY: 44, // Cannot be dragged above top bar
+        minY: 44, // Strict boundary: never allows titlebar to move under top bar
         maxY: window.innerHeight - 70,
       },
       onPress: () => {
@@ -65,7 +67,7 @@ export const Window: React.FC<WindowProps> = ({ instance, children }) => {
       draggable?.kill();
       draggableInstanceRef.current = null;
     };
-  }, [instance.id, instance.position.x, instance.position.y, focusWindow, updateWindowPosition]);
+  }, [instance.id, focusWindow, updateWindowPosition]);
 
   // Sync maximized state with Draggable
   useEffect(() => {
@@ -165,14 +167,23 @@ export const Window: React.FC<WindowProps> = ({ instance, children }) => {
           <span style={{ cursor: 'grab' }}>{instance.title}</span>
         </div>
 
-        <div className="titlebar-controls" onMouseDown={(e) => e.stopPropagation()}>
+        <div
+          className="titlebar-controls"
+          onMouseDown={(e) => e.stopPropagation()}
+          onPointerDown={(e) => e.stopPropagation()}
+          onTouchStart={(e) => e.stopPropagation()}
+        >
           <button
             type="button"
             className="win-control-btn"
             onClick={(e) => {
+              e.preventDefault();
               e.stopPropagation();
               minimizeWindow(instance.id as WindowId);
             }}
+            onMouseDown={(e) => e.stopPropagation()}
+            onPointerDown={(e) => e.stopPropagation()}
+            onTouchStart={(e) => e.stopPropagation()}
             title="Minimize window"
             aria-label="Minimize window"
           >
@@ -182,9 +193,13 @@ export const Window: React.FC<WindowProps> = ({ instance, children }) => {
             type="button"
             className="win-control-btn"
             onClick={(e) => {
+              e.preventDefault();
               e.stopPropagation();
               toggleMaximizeWindow(instance.id as WindowId);
             }}
+            onMouseDown={(e) => e.stopPropagation()}
+            onPointerDown={(e) => e.stopPropagation()}
+            onTouchStart={(e) => e.stopPropagation()}
             title={instance.isMaximized ? 'Restore window size' : 'Maximize window'}
             aria-label={instance.isMaximized ? 'Restore window size' : 'Maximize window'}
           >
@@ -194,9 +209,13 @@ export const Window: React.FC<WindowProps> = ({ instance, children }) => {
             type="button"
             className="win-control-btn close"
             onClick={(e) => {
+              e.preventDefault();
               e.stopPropagation();
               closeWindow(instance.id as WindowId);
             }}
+            onMouseDown={(e) => e.stopPropagation()}
+            onPointerDown={(e) => e.stopPropagation()}
+            onTouchStart={(e) => e.stopPropagation()}
             title="Close window"
             aria-label="Close window"
           >
