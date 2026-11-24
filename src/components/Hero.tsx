@@ -116,11 +116,14 @@ export const Hero: React.FC = () => {
   const reduceMotion = useReducedMotion();
 
   useEffect(() => {
+    const collage = document.querySelector('.ly-collage');
+    if (!collage) return;
     const checkPause = () => {
-      const sysBtn = document.querySelector('.ly-collage > button.loop-pause');
-      setHasSystemPause(!!sysBtn);
+      setHasSystemPause(!!collage.querySelector(':scope > button.loop-pause'));
     };
-    const t = setTimeout(checkPause, 400);
+    checkPause();
+    const obs = new MutationObserver(checkPause);
+    obs.observe(collage, { childList: true });
     const onDocClick = (e: MouseEvent) => {
       const btn = (e.target as HTMLElement)?.closest?.('.ly-collage > button.loop-pause');
       if (btn) {
@@ -129,7 +132,7 @@ export const Hero: React.FC = () => {
     };
     document.addEventListener('click', onDocClick);
     return () => {
-      clearTimeout(t);
+      obs.disconnect();
       document.removeEventListener('click', onDocClick);
     };
   }, []);
