@@ -112,7 +112,27 @@ const HERO_SLIDES = [
 export const Hero: React.FC = () => {
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
+  const [hasSystemPause, setHasSystemPause] = useState(false);
   const reduceMotion = useReducedMotion();
+
+  useEffect(() => {
+    const checkPause = () => {
+      const sysBtn = document.querySelector('.ly-collage > button.loop-pause');
+      setHasSystemPause(!!sysBtn);
+    };
+    const t = setTimeout(checkPause, 400);
+    const onDocClick = (e: MouseEvent) => {
+      const btn = (e.target as HTMLElement)?.closest?.('.ly-collage > button.loop-pause');
+      if (btn) {
+        setPaused(btn.getAttribute('aria-pressed') === 'true');
+      }
+    };
+    document.addEventListener('click', onDocClick);
+    return () => {
+      clearTimeout(t);
+      document.removeEventListener('click', onDocClick);
+    };
+  }, []);
 
   useEffect(() => {
     if (paused || reduceMotion) return;
@@ -190,7 +210,7 @@ export const Hero: React.FC = () => {
               </motion.div>
             </AnimatePresence>
 
-            {/* Slide progress indicator + pause control */}
+            {/* Slide progress indicator + fallback pause control when system.js doesn't mount one */}
             <div className="hero-collage-controls">
               <div className="hero-collage-dots" aria-hidden="true">
                 {HERO_SLIDES.map((s, i) => (
@@ -200,16 +220,18 @@ export const Hero: React.FC = () => {
                   />
                 ))}
               </div>
-              <button
-                type="button"
-                className="loop-pause"
-                onClick={() => setPaused((p) => !p)}
-                aria-label={paused ? 'Resume project preview cycle' : 'Pause project preview cycle'}
-                aria-pressed={paused}
-                style={{ position: 'static' }}
-              >
-                {paused ? <Play size={12} /> : <Pause size={12} />}
-              </button>
+              {!hasSystemPause && (
+                <button
+                  type="button"
+                  className="loop-pause"
+                  onClick={() => setPaused((p) => !p)}
+                  aria-label={paused ? 'Resume project preview cycle' : 'Pause project preview cycle'}
+                  aria-pressed={paused}
+                  style={{ position: 'static' }}
+                >
+                  {paused ? <Play size={12} /> : <Pause size={12} />}
+                </button>
+              )}
             </div>
           </div>
 
