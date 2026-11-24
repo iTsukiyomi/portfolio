@@ -1,0 +1,26 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "pulsing-dot",
+        "value": "*",
+        "files": [
+          "docs/index.html"
+        ],
+        "createdAt": "2026-11-24T10:27:42.927Z",
+        "reason": "untouched design-taste-frontend kit CSS rule (.ly-live::before), unused on page"
+      },
+      {
+        "rule": "radial-halo",
+        "value": "*",
+        "files": [
+          "docs/index.html"
+        ],
+        "createdAt": "2026-11-24T10:27:43.085Z",
+        "reason": "untouched design-taste-frontend kit CSS rule (.bg-halo), unused on page"
+      }
+    ]
+  }
+}

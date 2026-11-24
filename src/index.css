@@ -214,7 +214,11 @@
     --p-h: 104px;
   }
   #work .stage {
-    --fade-h: 24px;
+    --fade-h: 0px;
+  }
+  #work .stage--fade-b {
+    -webkit-mask: none;
+    mask: none;
   }
   #work .grid {
     gap: var(--s-4);
