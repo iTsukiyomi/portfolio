@@ -1,0 +1,464 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-24T00:00:00.000Z",
+  "title": "Design System: Meet Rathod Portfolio",
+  "extensions": {
+    "colorMeta": {
+      "blueprint-cobalt": {
+        "role": "primary",
+        "displayName": "Blueprint Cobalt",
+        "canonical": "#2456d6",
+        "tonalRamp": [
+          "oklch(18% 0.06 262)",
+          "oklch(28% 0.11 262)",
+          "oklch(38% 0.16 262)",
+          "oklch(48% 0.20 262)",
+          "oklch(58% 0.18 262)",
+          "oklch(70% 0.13 262)",
+          "oklch(83% 0.07 262)",
+          "oklch(94% 0.025 262)"
+        ]
+      },
+      "cobalt-ink": {
+        "role": "primary",
+        "displayName": "Cobalt Ink",
+        "canonical": "#ffffff",
+        "tonalRamp": [
+          "oklch(15% 0 0)",
+          "oklch(27% 0 0)",
+          "oklch(40% 0 0)",
+          "oklch(54% 0 0)",
+          "oklch(68% 0 0)",
+          "oklch(80% 0 0)",
+          "oklch(91% 0 0)",
+          "oklch(98% 0 0)"
+        ]
+      },
+      "warm-stone": {
+        "role": "neutral",
+        "displayName": "Warm Stone",
+        "canonical": "#dfdedb",
+        "tonalRamp": [
+          "oklch(18% 0.004 95)",
+          "oklch(30% 0.005 95)",
+          "oklch(43% 0.006 95)",
+          "oklch(56% 0.006 95)",
+          "oklch(69% 0.006 95)",
+          "oklch(80% 0.005 95)",
+          "oklch(89.5% 0.005 95)",
+          "oklch(96% 0.003 95)"
+        ]
+      },
+      "stone-surface": {
+        "role": "neutral",
+        "displayName": "Stone Surface",
+        "canonical": "#d3d2ce",
+        "tonalRamp": [
+          "oklch(17% 0.004 95)",
+          "oklch(29% 0.005 95)",
+          "oklch(42% 0.006 95)",
+          "oklch(55% 0.007 95)",
+          "oklch(68% 0.007 95)",
+          "oklch(79% 0.006 95)",
+          "oklch(85.8% 0.006 95)",
+          "oklch(95% 0.003 95)"
+        ]
+      },
+      "olive-charcoal": {
+        "role": "neutral",
+        "displayName": "Olive Charcoal",
+        "canonical": "#26251e",
+        "tonalRamp": [
+          "oklch(16% 0.008 102)",
+          "oklch(26.5% 0.014 102)",
+          "oklch(38% 0.014 102)",
+          "oklch(51% 0.013 102)",
+          "oklch(64% 0.011 102)",
+          "oklch(76% 0.009 102)",
+          "oklch(87% 0.006 102)",
+          "oklch(95% 0.003 102)"
+        ]
+      },
+      "stone-muted": {
+        "role": "neutral",
+        "displayName": "Stone Muted",
+        "canonical": "#5a5850",
+        "tonalRamp": [
+          "oklch(17% 0.008 98)",
+          "oklch(28% 0.011 98)",
+          "oklch(46% 0.014 98)",
+          "oklch(57% 0.013 98)",
+          "oklch(68% 0.011 98)",
+          "oklch(79% 0.008 98)",
+          "oklch(88% 0.005 98)",
+          "oklch(95% 0.003 98)"
+        ]
+      },
+      "charcoal-surface": {
+        "role": "neutral",
+        "displayName": "Charcoal Surface",
+        "canonical": "#313029",
+        "tonalRamp": [
+          "oklch(16% 0.008 100)",
+          "oklch(31% 0.013 100)",
+          "oklch(42% 0.013 100)",
+          "oklch(54% 0.012 100)",
+          "oklch(66% 0.010 100)",
+          "oklch(78% 0.008 100)",
+          "oklch(88% 0.005 100)",
+          "oklch(95% 0.003 100)"
+        ]
+      },
+      "ash-muted": {
+        "role": "neutral",
+        "displayName": "Ash Muted",
+        "canonical": "#9e9d99",
+        "tonalRamp": [
+          "oklch(18% 0.004 95)",
+          "oklch(30% 0.005 95)",
+          "oklch(43% 0.006 95)",
+          "oklch(56% 0.006 95)",
+          "oklch(69.5% 0.006 95)",
+          "oklch(80% 0.005 95)",
+          "oklch(89% 0.004 95)",
+          "oklch(96% 0.002 95)"
+        ]
+      },
+      "obsidian-code": {
+        "role": "neutral",
+        "displayName": "Obsidian Code",
+        "canonical": "#1c1b17",
+        "tonalRamp": [
+          "oklch(14% 0.006 95)",
+          "oklch(22% 0.009 95)",
+          "oklch(34% 0.010 95)",
+          "oklch(47% 0.010 95)",
+          "oklch(60% 0.009 95)",
+          "oklch(73% 0.007 95)",
+          "oklch(85% 0.005 95)",
+          "oklch(94% 0.003 95)"
+        ]
+      },
+      "sand-ground": {
+        "role": "neutral",
+        "displayName": "Sand Ground",
+        "canonical": "#d9ccb7",
+        "tonalRamp": [
+          "oklch(18% 0.012 80)",
+          "oklch(30% 0.018 80)",
+          "oklch(43% 0.024 80)",
+          "oklch(56% 0.028 80)",
+          "oklch(69% 0.031 80)",
+          "oklch(84.5% 0.032 80)",
+          "oklch(90% 0.022 80)",
+          "oklch(96% 0.010 80)"
+        ]
+      },
+      "sand-surface": {
+        "role": "neutral",
+        "displayName": "Sand Surface",
+        "canonical": "#e9e0d2",
+        "tonalRamp": [
+          "oklch(18% 0.010 80)",
+          "oklch(30% 0.015 80)",
+          "oklch(43% 0.020 80)",
+          "oklch(56% 0.023 80)",
+          "oklch(69% 0.025 80)",
+          "oklch(81% 0.024 80)",
+          "oklch(90.5% 0.022 80)",
+          "oklch(96% 0.009 80)"
+        ]
+      },
+      "sand-ink": {
+        "role": "neutral",
+        "displayName": "Sand Ink",
+        "canonical": "#2a2622",
+        "tonalRamp": [
+          "oklch(16% 0.008 65)",
+          "oklch(27% 0.012 65)",
+          "oklch(39% 0.014 65)",
+          "oklch(52% 0.014 65)",
+          "oklch(65% 0.012 65)",
+          "oklch(77% 0.010 65)",
+          "oklch(88% 0.007 65)",
+          "oklch(95% 0.003 65)"
+        ]
+      },
+      "sand-muted": {
+        "role": "neutral",
+        "displayName": "Sand Muted",
+        "canonical": "#5a534a",
+        "tonalRamp": [
+          "oklch(17% 0.009 70)",
+          "oklch(29% 0.013 70)",
+          "oklch(44.5% 0.016 70)",
+          "oklch(56% 0.015 70)",
+          "oklch(68% 0.013 70)",
+          "oklch(79% 0.010 70)",
+          "oklch(88% 0.006 70)",
+          "oklch(95% 0.003 70)"
+        ]
+      },
+      "sand-ochre": {
+        "role": "neutral",
+        "displayName": "Sand Ochre",
+        "canonical": "#a8794a",
+        "tonalRamp": [
+          "oklch(18% 0.030 68)",
+          "oklch(30% 0.050 68)",
+          "oklch(44% 0.070 68)",
+          "oklch(60% 0.085 68)",
+          "oklch(70% 0.078 68)",
+          "oklch(80% 0.058 68)",
+          "oklch(89% 0.034 68)",
+          "oklch(95% 0.014 68)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Triptych hero headline (h1) with tight -0.045em tracking and cap-height alignment."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section headings (h2) pairing full ink primary statements with muted secondary clauses."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Open work card headings (h3) and inspector section titles."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Running prose, card summaries, and inspector descriptions capped at 46ch-62ch."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Mega-menu column headers, stack tool chips, and legal metadata."
+      },
+      "stat": {
+        "displayName": "Stat",
+        "purpose": "Tabular counter-roll figures in the proof strip."
+      },
+      "mono": {
+        "displayName": "Mono",
+        "purpose": "File paths, code snippets, terminal output, copy pills, and inspector metric values."
+      }
+    },
+    "shadows": [
+      {
+        "name": "collage-piece",
+        "value": "0 1px 2px rgb(0 0 0 / 0.08), 0 22px 48px -22px rgb(0 0 0 / 0.34)",
+        "purpose": "Lifts overlapping code, metric, and icon cards off the WebGL gradient-mesh hero canvas."
+      },
+      {
+        "name": "ui-panel",
+        "value": "inset 0 1px 0 rgb(255 255 255 / 0.09), 0 1px 1px rgb(0 0 0 / 0.06), 0 2px 4px -1px rgb(0 0 0 / 0.07), 0 12px 24px -8px rgb(0 0 0 / 0.12), 0 32px 64px -24px rgb(0 0 0 / 0.14)",
+        "purpose": "Grounds embedded diff, terminal, and pipeline windows inside sand panels."
+      },
+      {
+        "name": "diagram-node",
+        "value": "0 1px 2px rgb(0 0 0 / 0.05), 0 8px 18px -12px rgb(0 0 0 / 0.22)",
+        "purpose": "Separates interactive hub and spoke nodes from the dotted diagram canvas."
+      },
+      {
+        "name": "panel-hover-lift",
+        "value": "0 14px 32px -18px rgb(0 0 0 / 0.2)",
+        "purpose": "Applied alongside a -2px vertical lift on fine-pointer hover over open work card panels."
+      },
+      {
+        "name": "inspector-sheet",
+        "value": "0 24px 64px -16px rgb(0 0 0 / 0.35)",
+        "purpose": "Elevates the slide-over case study drawer above the blurred charcoal backdrop."
+      },
+      {
+        "name": "pause-disc",
+        "value": "0 1px 2px rgb(0 0 0 / 0.12), 0 4px 12px -4px rgb(0 0 0 / 0.28)",
+        "purpose": "Keeps the 32px circular pause control legible over animated collage and diagram corners."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-ui",
+        "value": "cubic-bezier(0.2, 0.8, 0.2, 1)",
+        "purpose": "Default 180ms UI ease-out for buttons, links, nav underlines, and card hover lifts."
+      },
+      {
+        "name": "ease-out-kowalski",
+        "value": "cubic-bezier(0.23, 1, 0.32, 1)",
+        "purpose": "Emil Kowalski ease-out for hero collage crossfades (380ms), inspector tab content (220ms), and stack chip lifts (160ms)."
+      },
+      {
+        "name": "ease-in-out",
+        "value": "cubic-bezier(0.77, 0, 0.175, 1)",
+        "purpose": "Symmetric ease-in-out token for full-travel transitions."
+      },
+      {
+        "name": "ease-drawer",
+        "value": "cubic-bezier(0.32, 0.72, 0, 1)",
+        "purpose": "Drawer deceleration curve token."
+      },
+      {
+        "name": "spring-inspector-sheet",
+        "value": "spring(duration: 0.42s, bounce: 0.1)",
+        "purpose": "Slide-over entrance physics for the CaseStudyInspector sheet."
+      },
+      {
+        "name": "spring-inspector-tab",
+        "value": "spring(duration: 0.32s, bounce: 0.14)",
+        "purpose": "Shared-layout pill indicator transition across inspector tabs."
+      },
+      {
+        "name": "ease-enter",
+        "value": "cubic-bezier(0.22, 1, 0.36, 1)",
+        "purpose": "Hero entrance settle curve (900ms-1100ms)."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "sm-max",
+        "value": "639px"
+      },
+      {
+        "name": "md",
+        "value": "640px"
+      },
+      {
+        "name": "lg",
+        "value": "1024px"
+      },
+      {
+        "name": "xl",
+        "value": "1280px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Pill Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Primary Blueprint Cobalt pill CTA with animated arrow stem used in the header, hero, and inspector.",
+      "html": "<a class=\"ds-btn-primary\" href=\"#work\">Explore work<svg class=\"ds-m-arrow\" viewBox=\"0 0 12 12\" aria-hidden=\"true\"><path class=\"ds-m-arrow-stem\" d=\"M1 6h8\"/><path class=\"ds-m-arrow-head\" d=\"M4.5 2.5 8 6l-3.5 3.5\"/></svg></a>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 44px; padding: 0 24px; border-radius: 999px; border: 1px solid transparent; background: var(--p-action, #2456d6); color: var(--p-action-ink, #ffffff); font: 500 16px/1 var(--font-text, \"Geist\", system-ui, sans-serif); text-decoration: none; white-space: nowrap; cursor: pointer; transition: background-color 120ms cubic-bezier(0.2, 0.8, 0.2, 1), transform 90ms cubic-bezier(0.2, 0.8, 0.2, 1); } .ds-btn-primary:hover { background: color-mix(in oklab, var(--p-action, #2456d6) 84%, var(--p-bg, #dfdedb)); transform: translateY(-1px); transition-duration: 150ms, 90ms; } .ds-btn-primary:active { transform: translateY(1px) scale(0.985); } .ds-btn-primary:focus-visible { outline: 2px solid var(--p-action, #2456d6); outline-offset: 2px; } .ds-m-arrow { width: 12px; height: 12px; margin-right: -2px; overflow: visible; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; } .ds-m-arrow-stem { opacity: 0; transform: scaleX(0.2); transform-origin: 1px 50%; transition: opacity 120ms cubic-bezier(0.2, 0.8, 0.2, 1), transform 120ms cubic-bezier(0.2, 0.8, 0.2, 1); } .ds-m-arrow-head { transition: transform 120ms cubic-bezier(0.2, 0.8, 0.2, 1); } .ds-btn-primary:hover .ds-m-arrow-stem, .ds-btn-primary:focus-visible .ds-m-arrow-stem { opacity: 1; transform: none; transition-duration: 150ms; } .ds-btn-primary:hover .ds-m-arrow-head, .ds-btn-primary:focus-visible .ds-m-arrow-head { transform: translateX(3px); transition-duration: 150ms; }"
+    },
+    {
+      "name": "Statement XL CTA Button",
+      "kind": "button",
+      "refersTo": "button-primary-xl",
+      "description": "Oversized closing pill CTA rendered on the sand-lit statement footer.",
+      "html": "<a class=\"ds-btn-xl\" href=\"mailto:meetr459@gmail.com\">Email Meet Rathod<svg class=\"ds-btn-xl-arrow\" viewBox=\"0 0 12 12\" aria-hidden=\"true\"><path class=\"ds-btn-xl-stem\" d=\"M1 6h8\"/><path class=\"ds-btn-xl-head\" d=\"M4.5 2.5 8 6l-3.5 3.5\"/></svg></a>",
+      "css": ".ds-btn-xl { display: inline-flex; align-items: center; justify-content: center; gap: 10px; width: min(100%, 640px); height: clamp(64px, 1.4vw + 48px, 72px); padding: 0 32px; border-radius: 999px; border: 1px solid transparent; background: var(--p-action, #2456d6); color: var(--p-action-ink, #ffffff); font: 500 clamp(20px, 0.6vw + 16px, 26px)/1 var(--font-display, \"Geist\", system-ui, sans-serif); letter-spacing: -0.035em; text-decoration: none; cursor: pointer; transition: background-color 120ms cubic-bezier(0.2, 0.8, 0.2, 1), transform 90ms cubic-bezier(0.2, 0.8, 0.2, 1); } .ds-btn-xl:hover { background: color-mix(in oklab, var(--p-action, #2456d6) 84%, var(--ground-bg, #d9ccb7)); transform: translateY(-2px); } .ds-btn-xl:active { transform: translateY(1px) scale(0.985); } .ds-btn-xl:focus-visible { outline: 2px solid var(--p-action, #2456d6); outline-offset: 2px; } .ds-btn-xl-arrow { width: 0.62em; height: 0.62em; overflow: visible; fill: none; stroke: currentColor; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; } .ds-btn-xl-stem { opacity: 0; transform: scaleX(0.2); transform-origin: 1px 50%; transition: opacity 120ms ease, transform 120ms ease; } .ds-btn-xl-head { transition: transform 120ms ease; } .ds-btn-xl:hover .ds-btn-xl-stem { opacity: 1; transform: none; } .ds-btn-xl:hover .ds-btn-xl-head { transform: translateX(3px); }"
+    },
+    {
+      "name": "Copy Pill Button",
+      "kind": "button",
+      "refersTo": "button-copy-pill",
+      "description": "Monospace stone-surface pill button for one-click email copying in the footer.",
+      "html": "<button type=\"button\" class=\"ds-copy-pill\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect width=\"14\" height=\"14\" x=\"8\" y=\"8\" rx=\"2\" ry=\"2\"/><path d=\"M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2\"/></svg><span>meetr459@gmail.com</span></button>",
+      "css": ".ds-copy-pill { display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; border-radius: 999px; border: 1px solid color-mix(in oklab, var(--p-ink, #26251e) 20%, transparent); background: var(--p-surface, #d3d2ce); color: var(--p-ink, #26251e); font: 500 14px/1 var(--font-mono, \"Geist Mono\", ui-monospace, monospace); cursor: pointer; transition: background-color 150ms cubic-bezier(0.23, 1, 0.32, 1), transform 100ms cubic-bezier(0.23, 1, 0.32, 1); } .ds-copy-pill:hover { background: color-mix(in oklab, var(--p-surface, #d3d2ce) 80%, var(--p-ink, #26251e)); } .ds-copy-pill:active { transform: scale(0.97); } .ds-copy-pill:focus-visible { outline: 2px solid var(--p-action, #2456d6); outline-offset: 2px; }"
+    },
+    {
+      "name": "Circular Icon Control",
+      "kind": "button",
+      "refersTo": "button-icon-circle",
+      "description": "32px circular pause/play disc and 40px inspector close button on Warm Stone.",
+      "html": "<div class=\"ds-icon-row\"><button type=\"button\" class=\"ds-loop-pause\" aria-label=\"Pause project preview cycle\"><svg width=\"12\" height=\"12\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect x=\"14\" y=\"4\" width=\"4\" height=\"16\" rx=\"1\"/><rect x=\"6\" y=\"4\" width=\"4\" height=\"16\" rx=\"1\"/></svg></button><button type=\"button\" class=\"ds-inspector-close\" aria-label=\"Close project details\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M18 6 6 18\"/><path d=\"m6 6 12 12\"/></svg></button></div>",
+      "css": ".ds-icon-row { display: inline-flex; align-items: center; gap: 12px; } .ds-loop-pause { position: relative; display: grid; place-items: center; width: 32px; height: 32px; padding: 0; border-radius: 999px; border: 1px solid color-mix(in oklab, var(--p-ink, #26251e) 16%, transparent); background: var(--p-bg, #dfdedb); color: var(--p-ink, #26251e); box-shadow: 0 1px 2px rgb(0 0 0 / 0.12), 0 4px 12px -4px rgb(0 0 0 / 0.28); cursor: pointer; transition: border-color 150ms ease; } .ds-loop-pause:hover { border-color: color-mix(in oklab, var(--p-ink, #26251e) 32%, transparent); } .ds-loop-pause:focus-visible { outline: 2px solid var(--p-action, #2456d6); outline-offset: 2px; } .ds-inspector-close { width: 40px; height: 40px; border-radius: 999px; border: 1px solid color-mix(in oklab, var(--p-ink, #26251e) 20%, transparent); background: var(--p-bg, #dfdedb); color: var(--p-ink, #26251e); display: grid; place-items: center; cursor: pointer; transition: background-color 150ms cubic-bezier(0.23, 1, 0.32, 1), color 150ms cubic-bezier(0.23, 1, 0.32, 1), transform 100ms cubic-bezier(0.23, 1, 0.32, 1); } .ds-inspector-close:hover { background: var(--p-ink, #26251e); color: var(--p-bg, #dfdedb); } .ds-inspector-close:active { transform: scale(0.95); } .ds-inspector-close:focus-visible { outline: 2px solid var(--p-action, #2456d6); outline-offset: 2px; }"
+    },
+    {
+      "name": "Centered Navigation Bar",
+      "kind": "nav",
+      "refersTo": "nav-bar",
+      "description": "Fixed 72px Warm Stone header with wordmark left, centered links with animated underlines, and primary pill CTA right.",
+      "html": "<header class=\"ds-nav\"><div class=\"ds-nav-bar\"><a class=\"ds-nav-logo\" href=\"#top\">Meet Rathod</a><nav class=\"ds-nav-links\" aria-label=\"Main\"><a class=\"ds-nav-link\" href=\"#work\">Work</a><a class=\"ds-nav-link\" href=\"#architecture\">How it works</a><a class=\"ds-nav-link\" href=\"#stack\">Tools</a><a class=\"ds-nav-link\" href=\"#contact\">Contact</a></nav><div class=\"ds-nav-actions\"><a class=\"ds-nav-link\" href=\"#github\">GitHub</a><a class=\"ds-nav-cta\" href=\"#contact\">Get in touch</a></div></div></header>",
+      "css": ".ds-nav { width: 100%; height: 72px; background: var(--p-bg, #dfdedb); color: var(--p-ink, #26251e); border-bottom: 1px solid color-mix(in oklab, var(--p-ink, #26251e) 11%, transparent); padding: 0 24px; } .ds-nav-bar { height: 100%; display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: center; gap: 24px; } .ds-nav-logo { font: 500 22px/1 var(--font-display, \"Geist\", system-ui, sans-serif); letter-spacing: -0.02em; color: inherit; text-decoration: none; justify-self: start; } .ds-nav-links { display: flex; align-items: center; gap: 4px; justify-self: center; } .ds-nav-link { position: relative; display: inline-flex; align-items: center; height: 36px; padding: 0 12px; font: 500 15px/1 var(--font-text, \"Geist\", system-ui, sans-serif); color: inherit; text-decoration: none; white-space: nowrap; } .ds-nav-link::before { content: \"\"; position: absolute; left: 12px; right: 12px; bottom: -2px; height: 2px; border-radius: 2px; background: currentColor; transform: scaleX(0); transform-origin: right; transition: transform 180ms cubic-bezier(0.2, 0.8, 0.2, 1); } .ds-nav-link:hover::before, .ds-nav-link:focus-visible::before { transform: scaleX(1); transform-origin: left; } .ds-nav-link:focus-visible { outline: 2px solid var(--p-action, #2456d6); outline-offset: 2px; border-radius: 2px; } .ds-nav-actions { display: flex; align-items: center; gap: 16px; justify-self: end; } .ds-nav-cta { display: inline-flex; align-items: center; height: 44px; padding: 0 24px; border-radius: 999px; background: var(--p-action, #2456d6); color: var(--p-action-ink, #ffffff); font: 500 15px/1 var(--font-text, \"Geist\", system-ui, sans-serif); text-decoration: none; white-space: nowrap; transition: background-color 150ms cubic-bezier(0.2, 0.8, 0.2, 1); } .ds-nav-cta:hover { background: color-mix(in oklab, var(--p-action, #2456d6) 84%, var(--p-bg, #dfdedb)); }"
+    },
+    {
+      "name": "Open Work Card & Sand Panel",
+      "kind": "card",
+      "refersTo": "card-open",
+      "description": "Borderless project card sitting directly on Warm Stone above a sand-lit inset panel with hover lift.",
+      "html": "<article class=\"ds-card-open\"><h3 class=\"ds-card-title\">PyRedis server in Python</h3><p class=\"ds-card-summary\">A lightweight Redis-compatible key-value server built from scratch with TCP sockets, selectors, and RESP.</p><button type=\"button\" class=\"ds-card-trigger\">See PyRedis details<svg width=\"12\" height=\"12\" viewBox=\"0 0 12 12\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M1 6h8\"/><path d=\"M4.5 2.5 8 6l-3.5 3.5\"/></svg></button><div class=\"ds-panel-sand\"><div class=\"ds-ui-window\"><div class=\"ds-ui-head\"><span>iTsukiyomi/PyRedis</span><span>redis-cli</span></div><div class=\"ds-ui-body\"><div>$ python server.py</div><div>PING -&gt; PONG (RESP ok)</div><div>Listening 127.0.0.1:6379</div></div></div></div></article>",
+      "css": ".ds-card-open { display: flex; flex-direction: column; background: transparent; color: var(--p-ink, #26251e); padding: 0; max-width: 520px; } .ds-card-title { margin: 0; font: 560 18px/26px var(--font-text, \"Geist\", system-ui, sans-serif); letter-spacing: -0.012em; } .ds-card-summary { margin: 8px 0 0; font: 400 16px/24px var(--font-text, \"Geist\", system-ui, sans-serif); color: color-mix(in oklab, var(--p-ink, #26251e) 84%, var(--p-bg, #dfdedb)); max-width: 46ch; } .ds-card-trigger { display: inline-flex; align-items: center; gap: 6px; margin-top: 12px; padding: 0; border: 0; background: none; font: 500 16px/1.4 var(--font-text, \"Geist\", system-ui, sans-serif); color: var(--p-action, #2456d6); cursor: pointer; width: max-content; transition: transform 90ms cubic-bezier(0.23, 1, 0.32, 1); } .ds-card-trigger:active { transform: scale(0.97); } .ds-card-trigger:focus-visible { outline: 2px solid var(--p-action, #2456d6); outline-offset: 2px; border-radius: 2px; } .ds-panel-sand { position: relative; margin-top: 24px; padding: 24px 24px 0; min-height: 180px; border-radius: 8px; overflow: hidden; background-color: var(--ground-bg, #d9ccb7); background-image: radial-gradient(70% 90% at 12% 0%, color-mix(in oklab, var(--ground-surface, #e9e0d2) 92%, white), transparent 70%), radial-gradient(60% 80% at 100% 100%, color-mix(in oklab, var(--ground-accent, #a8794a) 34%, var(--ground-bg, #d9ccb7)), transparent 72%); box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--p-ink, #26251e) 7%, transparent); transition: transform 120ms cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 120ms cubic-bezier(0.2, 0.8, 0.2, 1); } .ds-card-open:hover .ds-panel-sand { transform: translateY(-2px); box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--p-ink, #26251e) 10%, transparent), 0 14px 32px -18px rgb(0 0 0 / 0.22); } .ds-ui-window { background: #ffffff; border: 1px solid color-mix(in oklab, var(--p-ink, #26251e) 12%, transparent); border-radius: 12px 12px 0 0; box-shadow: 0 12px 24px -8px rgb(0 0 0 / 0.14); overflow: hidden; } .ds-ui-head { display: flex; justify-content: space-between; padding: 10px 14px; border-bottom: 1px solid color-mix(in oklab, var(--p-ink, #26251e) 9%, transparent); font: 500 13px/16px var(--font-text, \"Geist\", system-ui, sans-serif); color: var(--p-ink, #26251e); } .ds-ui-body { padding: 12px 14px; font: 400 13px/20px var(--font-mono, \"Geist Mono\", ui-monospace, monospace); color: var(--p-muted, #5a5850); }"
+    },
+    {
+      "name": "Stack Tool Chip",
+      "kind": "chip",
+      "refersTo": "chip-stack",
+      "description": "Stone-surface tool chip with 6px radius, hairline border, and -2px hover lift.",
+      "html": "<div class=\"ds-chip-stack\"><svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#2456d6\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><polyline points=\"16 18 22 12 16 6\"/><polyline points=\"8 6 2 12 8 18\"/></svg><span>Python</span></div>",
+      "css": ".ds-chip-stack { display: inline-flex; align-items: center; gap: 12px; padding: 12px 16px; background: var(--p-surface, #d3d2ce); border: 1px solid color-mix(in oklab, var(--p-ink, #26251e) 11%, transparent); border-radius: 6px; font: 500 14px/1.4 var(--font-text, \"Geist\", system-ui, sans-serif); color: var(--p-ink, #26251e); transition: transform 160ms cubic-bezier(0.23, 1, 0.32, 1), border-color 160ms cubic-bezier(0.23, 1, 0.32, 1); } .ds-chip-stack:hover { transform: translateY(-2px); border-color: color-mix(in oklab, var(--p-ink, #26251e) 20%, transparent); }"
+    },
+    {
+      "name": "Inspector Pill Tabs & Traceback",
+      "kind": "custom",
+      "refersTo": "inspector-tab",
+      "description": "Segmented pill tab bar paired with an Obsidian Code monospace snippet block inside the inspector drawer.",
+      "html": "<div class=\"ds-inspector-preview\"><div class=\"ds-inspector-tabs\" role=\"tablist\"><button type=\"button\" role=\"tab\" aria-selected=\"true\" class=\"ds-inspector-tab is-active\">How it works</button><button type=\"button\" role=\"tab\" aria-selected=\"false\" class=\"ds-inspector-tab\">Highlights (3)</button><button type=\"button\" role=\"tab\" aria-selected=\"false\" class=\"ds-inspector-tab\">Code snippet</button></div><pre class=\"ds-traceback-pre\">events = self.selector.select(timeout=0.1)\nself.store.active_expiry_cycle()</pre></div>",
+      "css": ".ds-inspector-preview { display: grid; gap: 16px; background: var(--p-bg, #dfdedb); padding: 16px; border-radius: 8px; border: 1px solid color-mix(in oklab, var(--p-ink, #26251e) 20%, transparent); } .ds-inspector-tabs { display: flex; gap: 8px; padding-bottom: 12px; border-bottom: 1px solid color-mix(in oklab, var(--p-ink, #26251e) 11%, transparent); } .ds-inspector-tab { padding: 8px 14px; border: 0; border-radius: 999px; background: transparent; color: var(--p-muted, #5a5850); font: 500 14px/1.2 var(--font-text, \"Geist\", system-ui, sans-serif); cursor: pointer; transition: color 150ms cubic-bezier(0.23, 1, 0.32, 1), transform 100ms cubic-bezier(0.23, 1, 0.32, 1); } .ds-inspector-tab.is-active { background: var(--p-ink, #26251e); color: #ffffff; } .ds-inspector-tab:active { transform: scale(0.97); } .ds-inspector-tab:focus-visible { outline: 2px solid var(--p-action, #2456d6); outline-offset: 2px; } .ds-traceback-pre { margin: 0; padding: 16px; border-radius: 6px; background: #1c1b17; color: #dfdedb; font: 400 13px/1.5 var(--font-mono, \"Geist Mono\", ui-monospace, monospace); overflow-x: auto; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Stone Drafting Table",
+    "overview": "This system treats software engineering work like architectural plates laid out on warm drafting stone. Rather than wrapping every project in dark-mode SaaS cards or neon terminal clichés, the interface pairs matte warm stone grounds with crisp olive-charcoal ink, sharp structural corners, and a single blueprint cobalt accent reserved for primary actions and live signal paths. Note that while an earlier surface brief explored dark indigo technical vellum, the shipped build landed decisively in this daylight stone-and-blueprint world.\n\nContent breathes across full-screen editorial bands: a three-column triptych hero with a cycling WebGL gradient-mesh collage, open borderless project cards whose inset sand panels frame live UI fragments and hub diagrams, an inverse charcoal band for pinned architecture chapters, and a sand-lit closing statement footer. Interactive inspection happens inside a spring-driven slide-over drawer with shared-layout pill tabs and monospace code blocks.",
+    "keyCharacteristics": [
+      "Warm stone ground (`#dfdedb`) paired with deep olive-charcoal ink (`#26251e`) and a single blueprint cobalt accent (`#2456d6`).",
+      "Sharp structural radii (`4px`–`8px`) contrasted against full-pill interactive buttons and tabs (`999px`).",
+      "Geist for display and body copy paired with Geist Mono for file paths, metrics, and code blocks.",
+      "Open borderless work cards sitting directly on the page ground above sand-lit inset panels (`#d9ccb7`).",
+      "Tactile motion combining CSS ease-out micro-interactions, scroll-driven pinned chapters and counter rolls, and spring physics in the inspector drawer."
+    ],
+    "rules": [
+      {
+        "name": "The Single Cobalt Signal Rule",
+        "body": "Blueprint Cobalt (#2456d6) is the sole chromatic accent across the page; it marks primary actions, active diagram pulses, and key metrics, never decorative backgrounds or multi-color badges.",
+        "section": "colors"
+      },
+      {
+        "name": "The Three-Ground Alternation Rule",
+        "body": "Sections alternate strictly across three grounds—Warm Stone (#dfdedb), Olive Charcoal inverse (#26251e), and Sand Ground (#d9ccb7)—so adjacent bands separate by tone rather than horizontal divider rules.",
+        "section": "colors"
+      },
+      {
+        "name": "The Tabular Telemetry Rule",
+        "body": "Every numeric metric, counter-roll figure, and diff line number uses `tabular-nums` so animated digit strips and aligned columns never jitter horizontally.",
+        "section": "typography"
+      },
+      {
+        "name": "The Two-Tone Heading Rule",
+        "body": "Section headings pair a primary statement in full ink with a secondary clause in muted ink inside the same `h2`, eliminating the need for separate eyebrow labels above headings.",
+        "section": "typography"
+      },
+      {
+        "name": "The Equal-Edge Container Rule",
+        "body": "Every header, section, and footer aligns to the same centered `1280px` container with equal left and right gutters; no content block bleeds off only one side of the viewport.",
+        "section": "layout"
+      },
+      {
+        "name": "The Flat-Ground Rule",
+        "body": "Page sections, open work cards, and stack chips carry zero drop shadow at rest; elevation is reserved for embedded UI windows, collage layers, and modal overlays.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Sharp-Frame, Pill-Action Rule",
+        "body": "Structural frames, panels, and chips stay sharp (`4px`–`8px` radius), while primary actions, copy pills, and segmented tabs take full `999px` pill geometry so clickable controls read immediately against rectangular architecture.",
+        "section": "shapes"
+      }
+    ],
+    "dos": [
+      "Do keep Blueprint Cobalt (#2456d6) strictly for primary pill CTAs, inline action triggers, active diagram pulses, and key metrics so its signal stays unmistakable.",
+      "Do pair sharp structural radii (`4px`–`8px`) on panels, frames, and chips with full-pill (`999px`) geometry on buttons, tabs, and copy pills.",
+      "Do place open work cards directly on the Warm Stone (#dfdedb) ground with zero outer card box, letting the inset Sand Ground (#d9ccb7) panel carry the visual weight.",
+      "Do use `tabular-nums` on all counter-roll stats, diff line numbers, and monospace metrics.",
+      "Do honor `prefers-reduced-motion` by pausing cycling collages, terminal loops, and WebGL shaders while preserving color and state feedback."
+    ],
+    "donts": [
+      "Don't wrap open work cards or stack sections in extra bordered boxes or drop shadows at rest; keep page-level surfaces flat and separated by ground shifts.",
+      "Don't introduce secondary chromatic accents, neon glows, or dark-mode SaaS gradients outside the inverse Olive Charcoal (#26251e) architecture band and Obsidian Code (#1c1b17) blocks.",
+      "Don't add eyebrow or kicker labels above section or modal headings; use the two-tone heading pattern (ink + muted clause) instead.",
+      "Don't replace full-color local SVG tool marks in the stack mosaic or UI fragments with monochrome icon-font glyphs or external CDN icon URLs.",
+      "Don't break the equal-edge `1280px` container alignment with one-sided viewport bleeds."
+    ]
+  }
+}

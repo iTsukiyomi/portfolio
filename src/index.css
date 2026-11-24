@@ -1,0 +1,504 @@
+/* Emil Kowalski easing tokens & browser surface polish */
+:root {
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+::selection {
+  background-color: color-mix(in oklab, var(--p-accent) 24%, transparent);
+  color: var(--p-ink);
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--p-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: color-mix(in oklab, var(--p-ink) 22%, transparent);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: color-mix(in oklab, var(--p-ink) 38%, transparent);
+}
+
+/* Triptych Hero Collage (container-query scaled pieces) */
+.ly-collage {
+  container-type: inline-size;
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  background: var(--ground-bg, #d9ccb7);
+}
+
+.ly-collage .ly-piece {
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.08), 0 22px 48px -22px rgb(0 0 0 / 0.34);
+  border: 1px solid rgb(38 37 30 / 0.1);
+}
+
+.ly-collage .pc-card {
+  background: #ffffff;
+  color: #26251e;
+  padding: 3.4cqw 3.8cqw;
+  display: grid;
+  gap: 1.8cqw;
+  font: 400 max(13px, 2cqw) / 1.35 var(--font-text);
+}
+
+.ly-collage .pc-card--dark {
+  background: #1c1b17;
+  color: #dfdedb;
+  border-color: rgb(255 255 255 / 0.12);
+}
+
+.ly-collage .pc-card__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2cqw;
+  font-family: var(--font-mono);
+  font-size: max(13px, 1.75cqw);
+  color: #5a5850;
+}
+
+.ly-collage .pc-card--dark .pc-card__head {
+  color: #9e9d99;
+}
+
+.ly-collage .pc-card__title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: max(15px, 3.4cqw);
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+}
+
+.ly-collage .pc-card__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2cqw;
+  padding-top: 1.6cqw;
+  border-top: 1px solid rgb(38 37 30 / 0.12);
+  font-size: max(13px, 1.85cqw);
+}
+
+.ly-collage .pc-card--dark .pc-card__row {
+  border-top-color: rgb(255 255 255 / 0.12);
+}
+
+.ly-collage .pc-card__metric {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  color: #2456d6;
+}
+
+.ly-collage .pc-card--dark .pc-card__metric {
+  color: #8cb4ff;
+}
+
+.ly-collage .pc-code {
+  background: #1c1b17;
+  color: #dfdedb;
+  padding: 3.2cqw 3.6cqw;
+  font-family: var(--font-mono);
+  font-size: max(13px, 1.75cqw);
+  line-height: 1.45;
+  display: grid;
+  gap: 1cqw;
+}
+
+.ly-collage .pc-code .c-dim {
+  color: #9e9d99;
+}
+
+.ly-collage .pc-code .c-ok {
+  color: #6ee7b7;
+}
+
+.ly-collage .pc-code .c-acc {
+  color: #8cb4ff;
+}
+
+.ly-collage .pc-icons {
+  background: #ffffff;
+  color: #26251e;
+  padding: 2.8cqw 3.2cqw;
+  display: flex;
+  align-items: center;
+  gap: 2.2cqw;
+}
+
+.ly-collage .pc-icons img {
+  width: max(22px, 4.4cqw);
+  height: max(22px, 4.4cqw);
+  object-fit: contain;
+}
+
+.ly-collage .pc-corner-pad {
+  padding-right: 9cqw;
+}
+
+@media (max-width: 639px) {
+  .ly-collage .pc-card__row:nth-of-type(n + 3) {
+    display: none;
+  }
+}
+
+/* Hero collage controls */
+.hero-collage-controls {
+  position: absolute;
+  left: 4%;
+  right: 4%;
+  bottom: 4%;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  pointer-events: none;
+}
+
+.hero-collage-dots {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgb(255 255 255 / 0.88);
+  border: 1px solid rgb(38 37 30 / 0.12);
+  pointer-events: auto;
+}
+
+.hero-collage-dot {
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: rgb(38 37 30 / 0.25);
+  cursor: pointer;
+  transition: width 200ms var(--ease-out), background-color 150ms var(--ease-out);
+}
+
+.hero-collage-dot.is-active {
+  width: 20px;
+  background: var(--p-accent);
+}
+
+.hero-collage-controls .loop-pause {
+  pointer-events: auto;
+}
+
+/* Work 2x2 panel height */
+#work .panel {
+  --p-h: 336px;
+}
+
+@media (max-width: 1279px) {
+  #work .panel {
+    --p-h: 200px;
+  }
+}
+
+@media (max-width: 1023px) {
+  main > [data-moment="pinned-chapters"][data-moment]:not(.is-live) {
+    min-height: 200svh;
+  }
+}
+
+@media (max-width: 639px) {
+  #work .panel {
+    --p-h: 104px;
+  }
+  #work .stage {
+    --fade-h: 24px;
+  }
+  #work .grid {
+    gap: var(--s-4);
+  }
+  #work .card--open .panel {
+    margin-top: var(--s-3) !important;
+  }
+  #work .work-card-btn {
+    margin-top: var(--s-2);
+  }
+  #work .proof-strip {
+    margin-top: var(--s-4);
+    gap: var(--s-3);
+  }
+}
+
+/* Interactive Case Study Card trigger */
+.work-card-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: var(--s-3);
+  padding: 0;
+  border: 0;
+  background: none;
+  font: 500 var(--t-body) / 1.4 var(--font-text);
+  color: var(--action);
+  cursor: pointer;
+  transition: color var(--m-out) var(--ease-out), transform var(--m-press) var(--ease-out);
+}
+
+.work-card-btn:active {
+  transform: scale(0.97);
+}
+
+/* Proof counter strip inside #work */
+.proof-strip {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--gutter);
+  margin-top: var(--s-7);
+}
+
+.proof-strip .t-stat {
+  font: var(--display-weight) var(--t-stat) / 1 var(--font-display);
+  letter-spacing: var(--display-tracking);
+  font-variant-numeric: tabular-nums;
+  color: var(--ink);
+}
+
+@media (max-width: 1023px) {
+  .proof-strip {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Pinned chapters interactive visual frame */
+.mo-pc__visual--card {
+  background: var(--inv-surface, #313029);
+  border: 1px solid rgb(223 222 219 / 0.14);
+  border-radius: var(--r-lg);
+  padding: var(--s-6);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--s-5);
+  color: var(--inv-ink, #dfdedb);
+}
+
+.chapter-sim-box {
+  background: #191814;
+  border: 1px solid rgb(223 222 219 / 0.12);
+  border-radius: var(--r-md);
+  padding: var(--s-5);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 1.55;
+  color: #dfdedb;
+  max-width: 100%;
+  overflow-x: auto;
+  word-break: break-word;
+}
+
+@media (max-width: 639px) {
+  .mo-pc__visual--card {
+    padding: var(--s-3);
+    gap: var(--s-2);
+  }
+  .chapter-sim-box {
+    padding: var(--s-2) var(--s-3);
+    font-size: 11.5px;
+    line-height: 1.4;
+  }
+  .stack-mosaic {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--s-2);
+  }
+}
+
+/* Case Study Inspector Drawer / Modal (Emil Kowalski spring physics) */
+.inspector-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: rgb(38 37 30 / 0.56);
+  backdrop-filter: blur(6px);
+  display: flex;
+  justify-content: flex-end;
+  padding: var(--s-4);
+}
+
+.inspector-sheet {
+  width: min(680px, 100%);
+  height: 100%;
+  background: var(--p-bg);
+  color: var(--p-ink);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r-lg);
+  box-shadow: 0 24px 64px -16px rgb(0 0 0 / 0.35);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.inspector-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--s-4);
+  padding: var(--s-6);
+  border-bottom: 1px solid var(--line);
+  background: var(--p-surface);
+}
+
+.inspector-close {
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  border: 1px solid var(--line-strong);
+  background: var(--p-bg);
+  color: var(--p-ink);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  flex: none;
+  transition: background-color 150ms var(--ease-out), transform 100ms var(--ease-out);
+}
+
+.inspector-close:hover {
+  background: var(--p-ink);
+  color: var(--p-bg);
+}
+
+.inspector-close:active {
+  transform: scale(0.95);
+}
+
+.inspector-tabs {
+  display: flex;
+  gap: var(--s-2);
+  padding: var(--s-3) var(--s-6);
+  border-bottom: 1px solid var(--line);
+  background: var(--p-bg);
+  overflow-x: auto;
+}
+
+.inspector-tab {
+  position: relative;
+  padding: 8px 14px;
+  border: 0;
+  background: none;
+  font: 500 var(--t-small) / 1.2 var(--font-text);
+  color: var(--p-muted);
+  cursor: pointer;
+  border-radius: 999px;
+  white-space: nowrap;
+  transition: color 150ms var(--ease-out), transform 100ms var(--ease-out);
+}
+
+.inspector-tab[aria-selected="true"] {
+  color: var(--p-action-ink);
+}
+
+.inspector-tab:active {
+  transform: scale(0.97);
+}
+
+.inspector-tab__pill {
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  background: var(--p-ink);
+  z-index: 0;
+}
+
+.inspector-tab__label {
+  position: relative;
+  z-index: 1;
+}
+
+.inspector-body {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  padding: var(--s-6);
+  display: grid;
+  gap: var(--s-5);
+  align-content: start;
+}
+
+.traceback-pre {
+  background: #1c1b17;
+  color: #fca5a5;
+  padding: var(--s-4);
+  border-radius: var(--r-md);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 1.5;
+  overflow-x: auto;
+  margin: 0;
+}
+
+/* Stack icon mosaic */
+.stack-mosaic {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(132px, 1fr));
+  gap: var(--s-3);
+  margin-top: var(--s-6);
+}
+
+.stack-chip {
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+  padding: var(--s-3) var(--s-4);
+  background: var(--p-surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  font-size: var(--t-small);
+  font-weight: 500;
+  color: var(--p-ink);
+  transition: transform 160ms var(--ease-out), border-color 160ms var(--ease-out);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .stack-chip:hover {
+    transform: translateY(-2px);
+    border-color: var(--line-strong);
+  }
+}
+
+.stack-chip img {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  flex: none;
+}
+
+/* Copy button blur-bridged swap */
+.copy-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: 999px;
+  border: 1px solid var(--line-strong);
+  background: var(--p-surface);
+  color: var(--p-ink);
+  font: 500 var(--t-small) / 1 var(--font-mono);
+  cursor: pointer;
+  transition: background-color 150ms var(--ease-out), transform 100ms var(--ease-out);
+}
+
+.copy-pill:hover {
+  background: color-mix(in oklab, var(--p-surface) 80%, var(--p-ink));
+}
+
+.copy-pill:active {
+  transform: scale(0.97);
+}
+
+@media (max-width: 639px) {
+  .inspector-backdrop {
+    padding: 0;
+  }
+  .inspector-sheet {
+    border-radius: 0;
+  }
+}

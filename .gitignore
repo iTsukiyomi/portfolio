@@ -1,0 +1,12 @@
+node_modules/
+shots/
+.taste-skill/
+.impeccable/questions/
+.impeccable/mocks/
+.impeccable/review/
+.impeccable/config.local.json
+.impeccable/decision-payload.json
+.impeccable/surface-brief-body.md
+.impeccable/hook.cache.json
+*.log
+.DS_Store
